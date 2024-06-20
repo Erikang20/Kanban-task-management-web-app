@@ -1,0 +1,22 @@
+{
+	"main": "index.js",
+	"dependencies": {
+		"express": "^4.19.2",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"name": "kanban-task-management-web-app",
+	"version": "1.0.0",
+	"description": "![Design preview for the Kanban task management web app coding challenge](./preview.jpg)",
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Erikang20/Kanban-task-management-web-app.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Erikang20/Kanban-task-management-web-app/issues"
+	},
+	"homepage": "https://github.com/Erikang20/Kanban-task-management-web-app#readme"
+}
