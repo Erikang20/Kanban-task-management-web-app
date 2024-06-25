@@ -1,4 +1,4 @@
-import { Button } from "@components/General";
+import { Button } from "@components/core";
 import styles from "./style.module.css";
 import Link from "next/link";
 

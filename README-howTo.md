@@ -16,3 +16,9 @@ git clone https://github.com/Erikang20/Kanban-task-management-web-app.git
     |--client
 |--BACKEND APP
     |--server
+
+### Branch naming convention
+To create a new branch, we use this pattern `git branch <category/description-in-kebab-case>`
+example `feature/button-component`
+
+(SitedArticle)[https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4]

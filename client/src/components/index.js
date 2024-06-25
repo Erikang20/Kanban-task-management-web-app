@@ -1,2 +1,1 @@
-export * from "./HomepageComponent";
-export * from "./ComponentLibrary";
+export * from "./Home";
