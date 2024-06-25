@@ -1,0 +1,25 @@
+.container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.heading{
+	font-size: var(--font-size-large);
+	font-weight: bold;
+}
+.buttonRow{
+	width: 300px;
+	margin-top: 2rem;
+}
+
+.button{
+	width: 100%;
+	height: var(--height-button);
+	background-color: var(--main-purple);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
