@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { SidebarButton } from "@components/core";
-import useSidebar from "@General/SidebarButton/useSidebar";
+import useSidebar from "@components/Sidebar/useSidebar";
 
 const Sidebar = () => {
 	const { isHidden, toggleSidebar } = useSidebar();
@@ -12,7 +12,7 @@ const Sidebar = () => {
 				isHidden
 					? {}
 					: {
-							background: "wheat",
+							background: "ghostwhite",
 							width: "20%",
 							height: "100vh",
 							textAlign: "left",
