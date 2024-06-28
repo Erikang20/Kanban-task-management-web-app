@@ -1,14 +1,4 @@
 {
-<<<<<<< HEAD
-  "compilerOptions": {
-    "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*":["./src/components/*"],
-      "@core/*": ["./src/components/core/*"],
-      "@src/*": ["./src/*"],
-    }
-  }
-=======
 	"compilerOptions": {
 		"paths": {
 			"@assets/*": ["./src/assets/*"],
@@ -17,5 +7,4 @@
 			"@src/*": ["./src/*"]
 		}
 	}
->>>>>>> b1d3740 (Created SidebarButton and Sidebar Component with static data, useSidebar contains toggle logic and Reflecting changes in layout)
 }
