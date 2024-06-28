@@ -1,4 +1,48 @@
-.button--container{
+.buttonContainer{
 	width: 100%;
-	height: var(--)
+	height: var(--height-button);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	border-radius: var(--radius-button);
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+.buttonContainer:hover{
+	transition: 0.3s ease-in-out;
+}
+.BtnPrimary{
+	background: var(--main-purple);
+	color: var(--white);
+}
+.BtnPrimary:hover{
+	background: var(--main-purple-hover);
+}
+.BtnSecondaryLight{
+	background: var(--secondary-purple);
+	color: var(--main-purple);
+}
+.BtnSecondaryLight:hover{
+	background: var(--secondary-purple-hover);
+}
+.BtnDangerlight{
+	background: var(--red-hover);
+	color: var(--white)
+}
+.BtnDangerDark{
+	background: var(--red);
+	color: var(--white)
+}
+.BtnDangerDark:hover{
+	background: var(--red-hover);
+	color: var(--white)
+}
+.BtnSecondaryDark{
+	background: var(--white);
+	color: var(--main-purple)
+}
+.BtnSmall{
+	height: var(--height-input);
 }
