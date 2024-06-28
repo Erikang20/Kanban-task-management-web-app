@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import showIcon from "@assets/icon-show-sidebar.svg";
 import hideIcon from "@assets/icon-hide-sidebar.svg";
 
@@ -6,8 +7,8 @@ export const SidebarButton = (props) => {
 	const [imgSrc, setImgSrc] = useState(hideIcon);
 
 	const handleClick = () => {
+		props.isHidden ? setImgSrc(hideIcon) : setImgSrc(showIcon);
 		props.toggleButton();
-		setImgSrc(props.isHidden ? showIcon : hideIcon);
 	};
 
 	return (
@@ -22,7 +23,7 @@ export const SidebarButton = (props) => {
 								borderRadius: "0 45px 45px 0",
 								padding: "10px 20px",
 								background: "#635FC7",
-								transition: "100ms ease-out",
+								transition: "500ms ease-in",
 								position: "absolute",
 								top: "50%",
 							}
@@ -33,11 +34,16 @@ export const SidebarButton = (props) => {
 								background: "white",
 								fontWeight: "700",
 								color: "gray",
-								transition: "100ms ease-out",
+								transition: "200ms ease-out",
+								display: "flex",
+								justifyContent: "space-around",
+								alignItems: "center",
+								columnGap: "10px",
 							}
 				}
 			>
-				<img src={imgSrc} />
+				<Image src={imgSrc} width="26" height="20" alt="icon" />
+
 				{props.isHidden ? "" : "Hide Sidebar"}
 			</button>
 		</div>
