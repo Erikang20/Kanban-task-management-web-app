@@ -7,12 +7,12 @@ const HomepageContent = () => {
 		<div className={styles.container}>
 			<h1 className={styles.heading}>Welcome Kanban Task Management </h1>
 			<div className={styles.buttonRow}>
-				<Link href={"/components"}>
+				<Link href={"/kanban"}>
 					<Button className={styles.button}>Click to view components</Button>
 				</Link>
 			</div>
 		</div>
 	);
-}
+};
 
 export default HomepageContent;
