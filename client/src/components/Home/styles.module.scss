@@ -1,0 +1,20 @@
+.board {
+	background-color: #e3ebfa;
+	height: 100vh;
+	display: flex;
+	width: 100vw;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+.empty {
+	color: #8895a8;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 23px;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}

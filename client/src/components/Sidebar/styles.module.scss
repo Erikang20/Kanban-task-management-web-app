@@ -1,0 +1,15 @@
+.sidebar {
+	.boards {
+		color: #828fa3;
+	}
+
+	&.isDisplayed {
+		background-color: white;
+		width: 20%;
+		height: 100vh;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+}
