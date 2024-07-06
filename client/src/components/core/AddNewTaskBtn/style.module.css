@@ -1,4 +1,4 @@
-.button {
+.addNewTaskBtn {
     background-color: var(--main-purple);
     border-radius: 2rem;
     font-family: var(--font-regular);
@@ -8,4 +8,10 @@
     padding: 1rem 2rem; 
     border: none;
     font-weight: bold;
+    cursor: pointer;
+    float: right;
+}
+
+.addNewTaskBtn:hover {
+    background-color: var(--main-purple-hover);
 }

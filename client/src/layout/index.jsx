@@ -5,9 +5,12 @@
  * and render children of this components
  */
 import Sidebar from "@components/Sidebar";
+import AddNewTaskBtn from "@components/core/AddNewTaskBtn";
+
 const AppLayout = () => {
 	return (
 		<div>
+			<AddNewTaskBtn />
 			<Sidebar />
 			{/* Header */}
 			{/* children */}
