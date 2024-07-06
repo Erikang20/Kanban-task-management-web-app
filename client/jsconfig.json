@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "compilerOptions": {
     "paths": {
       "@assets/*": ["./src/assets/*"],
@@ -7,4 +8,15 @@
       "@src/*": ["./src/*"],
     }
   }
+=======
+	"compilerOptions": {
+		"jsx": "react",
+		"paths": {
+			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*"],
+			"@General/*": ["./src/components/core/*"],
+			"@src/*": ["./src/*"]
+		}
+	}
+>>>>>>> main
 }

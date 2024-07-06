@@ -1,36 +1,36 @@
 import styles from "./Button.module.css";
 
 
-export const Button = ({ children, theme = "light", variant = "primary", type = "button" }) => {
+export const Button = ({ children, theme = "light", variant = "primary", type = "button", size = "large", style }) => {
 	/**
 	 * @theme  light|dark
-	 * @param  {} {switch(variant
-	 * @param  {return"btn-danger-light";case"secondary":return"btn-secondary-light";default:return"btn-primary"}}switch(variant} {case"danger"
-	 * @returns return
+	 * @variants  primary|secondary|danger
+	 * @size small|large
+	 * @style CSSObject
 	 */
 	const handleVariantClasses = () => {
 		if (theme === "light") {
 			switch (variant) {
 				case "danger":
-					return "btn-danger-light";
+					return styles.BtnDangerlight;
 				case "secondary":
-					return "btn-secondary-light";
-
+					return styles.BtnSecondaryLight;
 				default:
-					return "btn-primary"
+					return styles.BtnPrimary
 			}
 		}
 		switch (variant) {
 			case "danger":
-				return "btn-danger-dark";
+				return styles.BtnDangerDark;
 			case "secondary":
-				return "btn-secondary-dark";
-
+				return styles.BtnSecondaryDark;
 			default:
-				return "btn-primary"
+				return styles.BtnPrimary
 		}
 	}
+	const handleClasses = `${styles.buttonContainer}  ${handleVariantClasses()} ${size === "small" ? styles.BtnSmall : ""}`;
 	return (
-		<button className={styles.buttonContainer} type={type}>{children}</button>
+		<button
+			className={handleClasses} type={type} style={style}>{children}</button>
 	);
 }

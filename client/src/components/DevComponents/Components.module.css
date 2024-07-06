@@ -1,0 +1,32 @@
+.Row {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	padding: 2rem;
+	gap: 24px;
+}
+
+.displayCard {
+	width: 45%;
+	padding: 2rem;
+	background: var(--white);
+	height: auto;
+	/* display: flex; */
+	border-radius: 24px;
+	/* flex-wrap: wrap; */
+}
+.dark {
+	background: var(--black);
+	border: 1px solid black;
+}
+
+@media screen and (max-width: 575px) {
+	.Row{
+		flex-wrap: wrap;
+		padding: 1rem;
+	}
+	.displayCard {
+		padding: 1.5rem;
+		width: 100%;
+	}
+}

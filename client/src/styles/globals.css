@@ -20,8 +20,12 @@
   --height-header: 97px;
   --height-card: 88px;
 
+  --radius-button: 24px;
+
   --main-purple: #635FC7;
   --main-purple-hover: #A8A4FF;
+  --secondary-purple: rgba(99, 95,199, 0.10);
+  --secondary-purple-hover: rgba(99, 95,199, 0.25);
   --red: #EA5555;
   --red-hover: #FF9898;
   --black: #000112;
