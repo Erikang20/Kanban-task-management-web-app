@@ -19,8 +19,8 @@
 }
 
 .modalInput {
-    font-size: var(--font-size-tiny) !important;
-    color: var(--black) !important;
+    font-size: var(--font-size-tiny);
+    color: var(--black);
 }
 
 .modalInput::placeholder {
