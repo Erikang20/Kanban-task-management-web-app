@@ -9,6 +9,7 @@
 	border: none;
 	cursor: pointer;
 	font-weight: bold;
+	font-size: var(--font-size-small);
 }
 .buttonContainer:hover{
 	transition: 0.3s ease-in-out;

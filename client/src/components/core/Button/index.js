@@ -1,7 +1,7 @@
 import styles from "./Button.module.css";
 
 
-export const Button = ({ children, theme = "light", variant = "primary", type = "button", size = "large", style }) => {
+export const Button = ({ children, theme = "light", variant = "primary", type = "button", size = "large", style, onClick }) => {
 	/**
 	 * @theme  light|dark
 	 * @variants  primary|secondary|danger
@@ -31,6 +31,6 @@ export const Button = ({ children, theme = "light", variant = "primary", type = 
 	const handleClasses = `${styles.buttonContainer}  ${handleVariantClasses()} ${size === "small" ? styles.BtnSmall : ""}`;
 	return (
 		<button
-			className={handleClasses} type={type} style={style}>{children}</button>
+			className={handleClasses} type={type} style={style} onClick={onClick}>{children}</button>
 	);
 }

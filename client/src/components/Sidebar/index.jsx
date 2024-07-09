@@ -7,7 +7,8 @@ import darkThemeIcon from "@assets/icon-dark-theme.svg";
 import lightThemeIcon from "@assets/icon-light-theme.svg";
 import logoLight from "@assets/logo-light.svg";
 import Slider from "@components/Sidebar/slider";
-import AddNewBoard from "@components/core/AddNewBoard/AddNewBoard";
+import AddNewBoardModal from "@components/core/Modals/AddNewBoardModal";
+
 
 const Sidebar = () => {
 	const [isHidden, setIsHidden] = useState(false);
@@ -49,10 +50,9 @@ const Sidebar = () => {
 							onClick={(e) => {
 								e.preventDefault();
 								setAddNewBoardModalOpen(!addNewBoardModalOpen);
-							}}>+Create New Board</a>
-
+							}}>+ Create New Board</a>
 						{addNewBoardModalOpen &&
-							<AddNewBoard
+							<AddNewBoardModal
 								addNewBoardModalOpen={addNewBoardModalOpen}
 								setAddNewBoardModalOpen={setAddNewBoardModalOpen}
 							/>

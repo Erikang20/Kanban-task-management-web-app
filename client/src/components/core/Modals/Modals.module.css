@@ -1,0 +1,55 @@
+
+.modalBtnNewCol {
+    margin: 1rem 0;
+    background-color: aquamarine;
+    border: 5px solid green;
+
+}
+
+.modalDiv {
+    font-family: var(--font-regular);
+}
+
+.modalHeader {
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+}
+
+.modalLabel {
+    font-size: var(--font-size-tiny);
+    color: var(--medium-grey);
+    font-weight: bold;
+}
+
+.modalInput {
+    font-size: var(--font-size-tiny) !important;
+    color: var(--black) !important;
+}
+
+.modalInput::placeholder {
+    color: var(--light);
+}
+
+.boardColumnItemContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xBtn {
+    padding: 1rem;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cross {
+    width: "1rem";
+    height: "1rem";
+}
+
+
+
