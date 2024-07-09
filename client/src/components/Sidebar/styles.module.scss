@@ -1,15 +1,23 @@
 .sidebar {
-	padding-left: 16px;
+	justify-content: space-between;
+
+	.logo {
+		padding-top: 30px;
+		padding-left: 35px;
+	}
 
 	.allBoards {
 		color: #828fa3;
+		padding-left: 16px;
 	}
 
 	.linkSection {
 		display: flex;
 		flex-direction: column;
+		padding-left: 16px;
+		color: #828fa3;
 	}
-	.sidebarLink{
+	.sidebarLink {
 		text-decoration: none;
 		color: var(--medium-grey);
 	}
@@ -28,13 +36,13 @@
 		text-align: left;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
 
 		.sliderSection {
 			position: relative;
 			display: inline-block;
 			width: 45px;
 			height: 25px;
+			padding-left: 16px;
 		}
 		.sliderSection input {
 			opacity: 0;
@@ -69,22 +77,21 @@
 			transform: translateX(26px);
 		}
 
-		&.isLightMode {
-			background-color: white;
+		.lightDarkModeIconSection {
+			position: relative;
+			background-color: #f4f7fd;
+			height: 48px;
+			display: flex;
+			align-items: center;
+			max-height: 50px;
+			justify-content: center;
+			top: 185px;
+			margin: 0 16px 0 35px;
+			border-radius: 9px;
 
-			.lightDarkModeIconSection {
-				background-color: #f4f7fd;
-				height: 48px;
-				display: flex;
-				align-items: center;
-				flex-grow: 1;
-				max-height: 50px;
-				justify-content: center;
+			&.isDarkMode {
+				background-color: #20212c;
 			}
-		}
-
-		&.isDarkMode {
-			background-color: #2b2c37;
 		}
 	}
 
