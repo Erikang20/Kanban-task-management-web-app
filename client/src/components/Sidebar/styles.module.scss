@@ -9,6 +9,18 @@
 		display: flex;
 		flex-direction: column;
 	}
+	.sidebarLink{
+		text-decoration: none;
+		color: var(--medium-grey);
+	}
+
+	.createNewBoardLink {
+		color: var(--main-purple);
+	}
+
+	.createNewBoardLink:hover {
+		cursor: pointer;
+	}
 
 	&.isDisplayed {
 		width: 20%;

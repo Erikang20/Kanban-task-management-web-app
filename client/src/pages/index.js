@@ -1,5 +1,6 @@
 import { SEO } from "@src/components/SEO";
 import HomepageContent from "@components/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
 	return (
