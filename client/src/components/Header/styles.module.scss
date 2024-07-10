@@ -13,7 +13,7 @@
 }
 
 .addNewTaskBtn {
-	background-color: var(--main-purple);
+	background-color: colors.$main-purple;
 	border-radius: 2rem;
 	font-family: var(--font-regular);
 	font-size: var(--font-size-small);
@@ -24,8 +24,8 @@
 	font-weight: bold;
 	cursor: pointer;
 	float: right;
-}
 
-// .addNewTaskBtn:hover {
-// 	background-color: var(--main-purple-hover);
-// }
+	&:hover {
+		background-color: colors.$hovered-purple;
+	}
+}
