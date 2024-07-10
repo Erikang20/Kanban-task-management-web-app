@@ -16,7 +16,6 @@
 	.linkSection {
 		display: flex;
 		flex-direction: column;
-		padding-left: 16px;
 		color: colors.$grey;
 	}
 
@@ -34,7 +33,7 @@
 	}
 
 	.createNewBoardLink {
-		color: var(--main-purple);
+		color: colors.$grey;
 	}
 
 	.createNewBoardLink:hover {
@@ -114,11 +113,13 @@
 	}
 }
 
+/**
+  * Hide SideBar button section
+  */
 .sideBarBtnContainer {
 	display: flex;
 	white-space: nowrap;
 	max-height: 80px;
-	margin-top: 90px;
 }
 
 .sideBarBtn {
@@ -126,7 +127,7 @@
 
 	.hideSpan {
 		padding-left: 10px;
-		margin-right: 155px;
+		margin-right: 70px;
 		height: 50px;
 		overflow: hidden;
 		max-height: 50px;
@@ -137,7 +138,7 @@
 		padding: 0 30px 20px 0;
 		font-weight: 700;
 		font-size: 16px;
-		color: gray;
+		color: colors.$grey;
 		column-gap: 10px;
 		border: none;
 		border-radius: 0 45px 45px 0;
@@ -154,7 +155,7 @@
 
 		&:hover {
 			background-color: #e4ebfa;
-			color: #635fc7;
+			color: colors.$main-purple;
 			left: 0;
 			padding-top: 10px;
 			max-height: 80px;
@@ -165,12 +166,12 @@
 		border: none;
 		border-radius: 0 45px 45px 0;
 		padding: 10px 20px;
-		background-color: #635fc7;
+		background-color: colors.$main-purple;
 		position: absolute;
 		bottom: 20px;
 
 		&:hover {
-			background-color: #a8a4ff;
+			background-color: colors.$hovered-purple;
 		}
 	}
 }

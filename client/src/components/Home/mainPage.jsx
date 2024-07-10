@@ -1,4 +1,5 @@
 import React from "react";
+import { Lists } from "@components/lists/lists";
 import styles from "./styles.module.scss";
 
 export const MainPage = () => {
@@ -6,7 +7,7 @@ export const MainPage = () => {
 		<main className={styles.board}>
 			<div>
 				<span className={styles.empty}>
-					This board is empty. Create a new column to get started
+					<Lists />
 				</span>
 			</div>
 		</main>
