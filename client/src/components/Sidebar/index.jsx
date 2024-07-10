@@ -1,88 +1,114 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import classNames from "classnames";
+import cx from "classnames";
+import styled, { ThemeProvider } from "styled-components";
 import { SidebarButton } from "@components/core";
 import styles from "./styles.module.scss";
-import darkThemeIcon from "@assets/icon-dark-theme.svg";
-import lightThemeIcon from "@assets/icon-light-theme.svg";
 import logoLight from "@assets/logo-light.svg";
+import logoDark from "@assets/logo-dark.svg";
 import Slider from "@components/Sidebar/slider";
 import AddNewBoardModal from "@components/core/Modals/AddNewBoardModal";
+import {
+	lightThemeSideBar,
+	darkThemeSideBar,
+	GlobalStyles,
+} from "@components/Home/theme";
+import { BoardIcon } from "./boardIcon";
 
+const StyledSidebarComponent = styled.div`
+	background-color: ${(props) => props.theme.body};
+`;
 
 const Sidebar = () => {
 	const [isHidden, setIsHidden] = useState(false);
 	const [isToggled, setIsToggle] = useState(false);
 	const [addNewBoardModalOpen, setAddNewBoardModalOpen] = useState(false);
+	const [theme, setTheme] = useState("light");
+
+	const themeToggler = () => {
+		theme === "light" ? setTheme("dark") : setTheme("light");
+	};
 
 	const toggleSidebar = () => {
 		setIsHidden(!isHidden);
 	};
 
-	const sidebarClass = classNames(styles.sidebar, {
-		[styles.isDarkMode]: false,
-		[styles.isLightMode]: true,
+	const onThemeChanged = () => {
+		setIsToggle(!isToggled);
+		themeToggler(theme);
+	};
+
+	const sidebarClass = cx(styles.sidebar, {
 		[styles.isDisplayed]: !isHidden,
+		[styles.isDarkMode]: theme === "dark",
 	});
 
 	return (
-		<div className={sidebarClass}>
-			{!isHidden && (
-				<>
-					<div>
-						<h1>
+		<ThemeProvider
+			theme={theme === "light" ? lightThemeSideBar : darkThemeSideBar}
+		>
+			<StyledSidebarComponent>
+				<GlobalStyles />
+				<div className={sidebarClass}>
+					{!isHidden && (
+						<>
 							<Image
 								className={styles.logo}
-								src={logoLight}
-								width="100"
-								height="30"
+								src={theme === "light" ? logoDark : logoLight}
+								width="200"
+								height="60"
 								alt="icon"
 							/>
-							Kanban
-						</h1>
-					</div>
-					<span className={styles.allBoards}>ALL BOARDS</span>
-					<div className={styles.linkSection}>
-						<a href="#" className={styles.sidebarLink}>Platform Launch</a>
-						<a href="#" className={styles.sidebarLink}>Marketing Plan</a>
-						<a href="#" className={styles.sidebarLink}>Roadmap</a>
-						<a href="#" className={`${styles.createNewBoardLink} ${styles.sidebarLink}`}
-							onClick={(e) => {
-								e.preventDefault();
-								setAddNewBoardModalOpen(!addNewBoardModalOpen);
-							}}>+ Create New Board</a>
-						{addNewBoardModalOpen &&
-							<AddNewBoardModal
-								addNewBoardModalOpen={addNewBoardModalOpen}
-								setAddNewBoardModalOpen={setAddNewBoardModalOpen}
+							<span className={styles.allBoards}>ALL BOARDS</span>
+							<div className={styles.linkSection}>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Platform Launch
+								</a>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Marketing Plan
+								</a>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Roadmap
+								</a>
+								<a
+									href="#"
+									className={`${styles.createNewBoardLink} ${styles.sidebarLink}`}
+									onClick={(e) => {
+										e.preventDefault();
+										setAddNewBoardModalOpen(
+											!addNewBoardModalOpen,
+										);
+									}}
+								>
+									<BoardIcon />+ Create New Board
+								</a>
+								{addNewBoardModalOpen && (
+									<AddNewBoardModal
+										addNewBoardModalOpen={
+											addNewBoardModalOpen
+										}
+										setAddNewBoardModalOpen={
+											setAddNewBoardModalOpen
+										}
+									/>
+								)}
+							</div>
+							<Slider
+								isToggled={isToggled}
+								onToggle={() => onThemeChanged(!isToggled)}
 							/>
-						}
-					</div>
-
-					<div className={styles.lightDarkModeIconSection}>
-						<Image
-							className={styles.lightModeIcon}
-							src={lightThemeIcon}
-							width="20"
-							height="18"
-							alt="icon"
-						/>
-						<Slider
-							isToggled={isToggled}
-							onToggle={() => setIsToggle(!isToggled)}
-						/>
-						<Image
-							className={styles.darkModeIcon}
-							src={darkThemeIcon}
-							width="18"
-							height="18"
-							alt="icon"
-						/>
-					</div>
-				</>
-			)}
-			<SidebarButton isHidden={isHidden} toggleButton={toggleSidebar} />
-		</div>
+						</>
+					)}
+					<SidebarButton
+						isHidden={isHidden}
+						toggleButton={toggleSidebar}
+					/>
+				</div>
+			</StyledSidebarComponent>
+		</ThemeProvider>
 	);
 };
 

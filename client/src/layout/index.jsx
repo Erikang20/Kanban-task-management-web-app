@@ -9,12 +9,10 @@ import AddNewTaskBtn from "@components/core/AddNewTaskBtn";
 
 const AppLayout = () => {
 	return (
-		<div>
+		<>
 			<AddNewTaskBtn />
 			<Sidebar />
-			{/* Header */}
-			{/* children */}
-		</div>
+		</>
 	);
 };
 export default AppLayout;
