@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styled, { ThemeProvider } from "styled-components";
-import { SidebarButton } from "@components/core";
+import { HideSideBarBtn } from "./hideSideBarBtn";
 import styles from "./styles.module.scss";
 import Slider from "@components/Sidebar/slider";
 import AddNewBoardModal from "@components/core/Modals/AddNewBoardModal";
@@ -97,7 +97,7 @@ const Sidebar = () => {
 							isToggled={isToggled}
 							onToggle={() => onThemeChanged(!isToggled)}
 						/>
-						<SidebarButton
+						<HideSideBarBtn
 							isHidden={isHidden}
 							toggleButton={toggleSidebar}
 						/>
