@@ -1,6 +1,15 @@
 import Image from "next/image";
 import iconBoard from "@assets/icon-board.svg";
+import styles from "./styles.module.scss";
 
 export const BoardIcon = () => {
-	return <Image src={iconBoard} width="20" height="20" alt="icon" />;
+	return (
+		<Image
+			className={styles.boardIconBtn}
+			src={iconBoard}
+			width="50"
+			height="20"
+			alt="icon"
+		/>
+	);
 };

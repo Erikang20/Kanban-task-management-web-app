@@ -4,8 +4,9 @@
 		"paths": {
 			"@assets/*": ["./src/assets/*"],
 			"@components/*": ["./src/components/*"],
-			"@General/*": ["./src/components/core/*"],
-			"@src/*": ["./src/*"]
+			"@general/*": ["./src/components/core/*"],
+			"@src/*": ["./src/*"],
+			"@styles/*": ["./src/styles/*"]
 		}
 	}
 }

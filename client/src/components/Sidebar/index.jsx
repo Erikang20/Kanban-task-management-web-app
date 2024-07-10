@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import cx from "classnames";
 import styled, { ThemeProvider } from "styled-components";
 import { SidebarButton } from "@components/core";
 import styles from "./styles.module.scss";
-import logoLight from "@assets/logo-light.svg";
-import logoDark from "@assets/logo-dark.svg";
 import Slider from "@components/Sidebar/slider";
 import AddNewBoardModal from "@components/core/Modals/AddNewBoardModal";
 import {
@@ -14,6 +11,7 @@ import {
 	GlobalStyles,
 } from "@components/Home/theme";
 import { BoardIcon } from "./boardIcon";
+import LogoHeader from "@components/Header/logo";
 
 const StyledSidebarComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -52,15 +50,11 @@ const Sidebar = () => {
 				<div className={sidebarClass}>
 					{!isHidden && (
 						<>
-							<Image
-								className={styles.logo}
-								src={theme === "light" ? logoDark : logoLight}
-								width="200"
-								height="60"
-								alt="icon"
-							/>
-							<span className={styles.allBoards}>ALL BOARDS</span>
+							<LogoHeader theme={theme} />
 							<div className={styles.linkSection}>
+								<span className={styles.allBoards}>
+									ALL BOARDS
+								</span>
 								<a href="#" className={styles.sidebarLink}>
 									<BoardIcon />
 									Platform Launch
@@ -96,16 +90,18 @@ const Sidebar = () => {
 									/>
 								)}
 							</div>
-							<Slider
-								isToggled={isToggled}
-								onToggle={() => onThemeChanged(!isToggled)}
-							/>
 						</>
 					)}
-					<SidebarButton
-						isHidden={isHidden}
-						toggleButton={toggleSidebar}
-					/>
+					<>
+						<Slider
+							isToggled={isToggled}
+							onToggle={() => onThemeChanged(!isToggled)}
+						/>
+						<SidebarButton
+							isHidden={isHidden}
+							toggleButton={toggleSidebar}
+						/>
+					</>
 				</div>
 			</StyledSidebarComponent>
 		</ThemeProvider>

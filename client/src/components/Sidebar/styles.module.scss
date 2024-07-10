@@ -1,14 +1,16 @@
+@use "@styles/colors.module.scss";
+
 .sidebar {
 	justify-content: space-between;
-
-	.logo {
-		padding-top: 30px;
-		padding-left: 35px;
-	}
 
 	.allBoards {
 		color: #828fa3;
 		padding-left: 16px;
+	}
+
+	.boardIconBtn {
+		padding-left: 20px;
+		padding-right: 15px;
 	}
 
 	.linkSection {
@@ -17,9 +19,18 @@
 		padding-left: 16px;
 		color: #828fa3;
 	}
+
 	.sidebarLink {
 		text-decoration: none;
 		color: var(--medium-grey);
+		padding: 16px 0;
+
+		&:hover {
+			background-color: colors.$main-purple;
+			color: colors.$white;
+			border-radius: 0 45px 45px 0;
+			max-height: 80px;
+		}
 	}
 
 	.createNewBoardLink {
@@ -31,7 +42,7 @@
 	}
 
 	&.isDisplayed {
-		width: 20%;
+		width: 400px;
 		height: 100vh;
 		text-align: left;
 		display: flex;
@@ -57,7 +68,7 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background-color: #635fc7;
+			background-color: colors.$main-purple;
 			border-radius: 24px;
 		}
 
@@ -68,7 +79,7 @@
 			width: 13px;
 			left: 4px;
 			bottom: 4px;
-			background-color: white;
+			background-color: colors.$white;
 			transition: 0.4s;
 			border-radius: 50%;
 		}
@@ -78,14 +89,13 @@
 		}
 
 		.lightDarkModeIconSection {
-			position: relative;
 			background-color: #f4f7fd;
 			height: 48px;
 			display: flex;
 			align-items: center;
 			max-height: 50px;
 			justify-content: center;
-			top: 185px;
+			top: 300px;
 			margin: 0 16px 0 35px;
 			border-radius: 9px;
 
