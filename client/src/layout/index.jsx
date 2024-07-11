@@ -5,12 +5,16 @@
  * and render children of this components
  */
 import Sidebar from "@components/Sidebar";
-const AppLayout = () => {
+import Header from "@components/Header";
+import styles from "./styles.module.scss";
+
+const AppLayout = ({children}) => {
 	return (
-		<div>
+		<div className={styles.body}>
 			<Sidebar />
-			{/* Header */}
+			{/* <Header /> */}
 			{/* children */}
+			{children}
 		</div>
 	);
 };

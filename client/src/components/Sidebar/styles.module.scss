@@ -1,8 +1,11 @@
 .sidebar {
-	padding-left: 16px;
+	// padding-right: 16px;
 
 	.allBoards {
 		color: #828fa3;
+		padding-left: 30px;
+		margin-bottom: 10px;
+		font-size: medium;
 	}
 
 	.linkSection {
@@ -68,6 +71,9 @@
 				flex-grow: 1;
 				max-height: 50px;
 				justify-content: center;
+				margin-left: 20px;
+				margin-top: 200px;
+				margin-right: 20px;
 			}
 		}
 
@@ -83,4 +89,108 @@
 	.darkModeIcon {
 		margin-left: 20px;
 	}
+
+	.heading {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 30px;
+		margin-bottom: 10px;
+	}
+
+	.headingText {
+		padding-bottom: 3px;
+	}
+
+	.logo {
+		width: 40px;
+	}
+
+	.icon:hover {
+		color: white;
+	}
+
+	.linkContainerA {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: 15px;
+		padding-top: 15px;
+		margin-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 50px;
+	}
+
+	.linkContainerA:hover {
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		background-color: #635fc7;
+	}
+
+	.linkContainerB {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: 15px;
+		padding-top: 15px;
+		margin-bottom: 10px;
+		padding-left: 20px;
+	}
+
+	.linkContainerB:hover {
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		background-color: #635fc7;
+	}
+
+	.linkContainerC {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: 15px;
+		padding-top: 15px;
+		margin-bottom: 10px;
+		padding-left: 20px;
+	}
+
+	.linkContainerC:hover {
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		background-color: #635fc7;
+	}
+
+	.link {
+		font-weight: 700;
+		color: #828fa3;
+	}
+
+	.link:hover {
+		font-weight: 700;
+		color: white;
+	}
+
+	.themeButton {
+		margin-top: auto;
+	}
+
+	.newBoardLinkCon {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: 15px;
+		padding-top: 15px;
+		margin-bottom: 10px;
+		padding-left: 30px;
+	}
+
+	.newBoardLink {
+		font-weight: 700;
+		font-size: small;
+		color: #635fc7;
+	}
+
+	// .hidesidebar {
+	// 	width: 20vh;
+	// 	padding-left: 20px;
+	// }
 }

@@ -43,7 +43,7 @@ export const SidebarButton = (props) => {
 								background: "#635FC7",
 								transition: "200ms ease-in",
 								position: "absolute",
-								top: "50%",
+								top: "90%",
 							}
 						: {
 								border: "none",
@@ -58,6 +58,7 @@ export const SidebarButton = (props) => {
 								justifyContent: "space-around",
 								alignItems: "center",
 								columnGap: "10px",
+								marginLeft:"20px",
 							}
 				}
 			>
