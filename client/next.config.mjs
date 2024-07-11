@@ -8,6 +8,14 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, "styles")],
 	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.(graphql|gql)/,
+			loader: "graphql-tag/loader",
+		});
+
+		return config;
+	},
 };
 
 export default nextConfig;

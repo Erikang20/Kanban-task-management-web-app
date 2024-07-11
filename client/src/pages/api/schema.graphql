@@ -1,0 +1,28 @@
+type Query {
+	boards: []
+  name: String
+  columns: [ColumnItem]
+}
+
+type ColumnItem {
+  name: String
+  tasks: [Tasks]
+}
+
+type Tasks {
+	"ID of the task"
+	id: ID!
+	"Title of the task"
+	title: String
+	"description of the task"
+	description: String
+	"status of the task"
+	status: String
+	"subtask of the task"
+	subtasks: [SubTasks]
+}
+
+type SubTasks {
+	title: String!
+	isCompleted: Boolean
+}
