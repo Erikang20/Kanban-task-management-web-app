@@ -2,12 +2,10 @@
 // This is with reactstrap and bootstrap
 import {
     Modal,
-    ModalHeader,
     ModalBody,
     FormGroup,
     Label,
     Form,
-    FormData,
     Input
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,35 +25,28 @@ const AddNewBoardModal = ({ addNewBoardModalOpen, setAddNewBoardModalOpen }) => 
         setInputValue(e.target.value);
         const newBoardName = e.target.value;
         setBoardName(newBoardName);
-        console.log(boardName)
     };
 
     const handleBoardColumnChange = (e) => {
         setInputValue(e.target.value);
         boardColumns[e.target.id] = e.target.value;
         setBoardColumns(boardColumns);
-        console.log(boardColumns)
     };
 
     const handleAddNewColumnBtnClick = () => {
         setBoardColumns([...boardColumns, ""])
-        console.log(boardColumns)
     }
 
     const handleXBtnClick = (e) => {
         const newBoardColumns = [...boardColumns];
         newBoardColumns.splice(e.target.id, 1);
         setBoardColumns(newBoardColumns);
-        console.log(boardColumns)
     }
 
     const handleCreateNewBoardSubmit = (e) => {
         // e.preventDefault();
-        console.log(boardName)
         const newBoardName = boardName;
-        console.log(newBoardName);
         setNewBoard({boardName: newBoardName, boardColumns: boardColumns})
-        console.log(newBoard);
         setAddNewBoardModalOpen(false);
     }
 
