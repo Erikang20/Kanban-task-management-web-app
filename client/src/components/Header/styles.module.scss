@@ -12,6 +12,13 @@
 	padding-left: 35px;
 }
 
+.headerButtons {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 250px;
+}
+
 .addNewTaskBtn {
 	background-color: colors.$main-purple;
 	border-radius: 2rem;
@@ -23,9 +30,14 @@
 	border: none;
 	font-weight: bold;
 	cursor: pointer;
-	float: right;
 
 	&:hover {
 		background-color: colors.$hovered-purple;
 	}
+}
+
+.verticalEllipsis {
+	width: .25rem;
+	
+	cursor: pointer;
 }
