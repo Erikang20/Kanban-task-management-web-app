@@ -8,6 +8,10 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, "styles")],
 	},
+	// webpack(config) {
+	// 	config.resolve.extensions.push(".ts", ".tsx");
+	// 	return config;
+	// },
 };
 
 export default nextConfig;

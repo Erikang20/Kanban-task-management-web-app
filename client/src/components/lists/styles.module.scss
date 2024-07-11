@@ -1,5 +1,19 @@
+@use "@styles/colors.module.scss";
+
 .listContainer {
 	background-color: transparent;
 	display: flex;
-	flex-direction: column;
+
+	.columns {
+		width: 400px;
+	}
+
+	.listHeaderContainer {
+		display: flex;
+		color: colors.$grey;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin: 30px;
+	}
 }
