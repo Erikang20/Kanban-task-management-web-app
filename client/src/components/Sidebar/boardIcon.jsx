@@ -8,7 +8,7 @@ export const BoardIcon = () => {
 			className={styles.boardIconBtn}
 			src={iconBoard}
 			width="50"
-			height="20"
+			height="15"
 			alt="icon"
 		/>
 	);

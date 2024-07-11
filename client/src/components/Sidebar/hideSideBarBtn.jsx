@@ -5,7 +5,7 @@ import showIcon from "@assets/icon-show-sidebar.svg";
 import hideIcon from "@assets/icon-hide-sidebar.svg";
 import styles from "./styles.module.scss";
 
-export const SidebarButton = (props) => {
+export const HideSideBarBtn = (props) => {
 	const [imgSrc, setImgSrc] = useState(hideIcon);
 
 	const handleClick = () => {
