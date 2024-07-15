@@ -16,20 +16,6 @@ export const Dialog = forwardRef<HTMLDialogElement, Props>(
 		const dialogRef = useRef<null | HTMLDialogElement>(null);
 		const showModal = searchParams.get("showModal");
 
-		// const onToggle = () => {
-		// 	if (!dialogRef.current) {
-		// 		return;
-		// 	}
-		// 	dialogRef.current.hasAttribute("open")
-		// 		? dialogRef.current.close()
-		// 		: dialogRef.current.showModal();
-		// };
-
-		// const closeModal = () => {
-		// 	dialogRef.current?.close();
-		// 	close();
-		// };
-
 		useEffect(() => {
 			if (showModal === "y") {
 				dialogRef.current?.showModal();
