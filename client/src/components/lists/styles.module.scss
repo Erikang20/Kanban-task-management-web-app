@@ -8,12 +8,33 @@
 		width: 400px;
 	}
 
+	.header {
+		padding-left: 30px;
+		font-family: "Plus Jakarta Sans", sans-serif;
+	}
+
 	.listHeaderContainer {
-		display: flex;
+		display: inline-block;
 		color: colors.$grey;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		margin: 30px;
+		margin: 0 30px;
+
+		.headerIcon {
+			margin: 0 16px;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+		}
+
+		.headerIcon-blue {
+			background-color: colors.$blue;
+		}
+
+		.headerIcon-purple {
+			background-color: colors.$main-purple;
+		}
+
+		.headerIcon-green {
+			background-color: colors.$green;
+		}
 	}
 }

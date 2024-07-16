@@ -1,11 +1,29 @@
 @use "@styles/colors.module.scss";
 
 .cardContainer {
-	color: #828fa3;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30px;
+
+	.cardBody {
+		color: black;
+		text-decoration: none;
+		background-color: colors.$white;
+		height: 100px;
+		border-radius: 10px;
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: medium;
+		font-weight: bold;
+		padding: 16px;
+		box-shadow:
+			0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+			0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+			0 12.5px 10px rgba(0, 0, 0, 0.06);
+	}
 }
 
 .dialogContainer {
-	color: #828fa3;
+	color: colors.$grey;
 	height: 500px;
 	width: 300px;
 

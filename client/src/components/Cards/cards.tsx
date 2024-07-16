@@ -22,9 +22,9 @@ export const Cards = () => {
 	};
 	return (
 		<div className={styles.cardContainer}>
-			<Link href={"?showModal=y"}>
+			<Link className={styles.cardBody} href={"?showModal=y"}>
 				<>
-					CARD
+					<div>Build UI for onboarding flow</div>
 					<div className={styles.dialogContainer}>
 						<Dialog
 							onClose={closeModal}

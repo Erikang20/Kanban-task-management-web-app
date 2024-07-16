@@ -3,10 +3,5 @@ import cx from "classnames";
 import styles from "./styles.module.scss";
 
 export const ListHeader = ({ name }) => {
-	return (
-		<>
-			<span className={styles.headerIcon}></span>
-			<div className={styles.listHeaderContainer}>{name}</div>
-		</>
-	);
+	return <div className={styles.header}>{name}</div>;
 };
