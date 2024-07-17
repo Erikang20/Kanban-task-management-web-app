@@ -26,21 +26,82 @@ export const Cards = () => {
 				<>
 					<div>Build UI for onboarding flow</div>
 					<div className={styles.dialogContainer}>
-						<Dialog
-							onClose={closeModal}
-							title="I'm the heading"
-							toggleDialog={onToggle}
-						>
+						<Dialog onClose={closeModal} toggleDialog={onToggle}>
 							{
-								<>
+								<div className={styles.cardDialogBody}>
 									<ThreeDotsMenu />
 									<div>
-										<p>LOREM IPSUM</p>
-										<form>Current status</form>
+										<h1>
+											Research Pricing points of various
+											competitors and trial different
+											business models
+										</h1>
+										<p>
+											We know what we're planning to build
+											for version one. Now we need to
+											finalize the first pricing model
+											we'll use. Keep iterating the
+											subtasks until we have a coherent
+											proposition.
+										</p>
+										<p>Subtasks</p>
+										<div className={styles.subTasks}>
+											<div
+												className={
+													styles.subTasksChecks
+												}
+											>
+												<input type="checkbox" />
+												<label>
+													Research competitor pricing
+													and business models
+												</label>
+											</div>
+
+											<div
+												className={
+													styles.subTasksChecks
+												}
+											>
+												<input type="checkbox" />
+												<label>
+													Outline a business model
+													that works for our solution
+												</label>
+											</div>
+											<div
+												className={
+													styles.subTasksChecks
+												}
+											>
+												<input type="checkbox" />
+												<label>
+													Talk to potential customers
+													about our proposed solution
+													and ask for fair price
+													expectancy
+												</label>
+											</div>
+										</div>
+										<div>
+											<form>
+												<label>Current Status</label>
+												<select>
+													<option value="Doing">
+														Doing
+													</option>
+													<option value="Todo">
+														Todo
+													</option>
+													<option value="Done">
+														Done
+													</option>
+												</select>
+											</form>
+										</div>
 									</div>
-								</>
+								</div>
 							}
-							I'm a card
 						</Dialog>
 					</div>
 				</>

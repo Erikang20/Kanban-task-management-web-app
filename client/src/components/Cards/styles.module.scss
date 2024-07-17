@@ -32,3 +32,33 @@
 		color: black;
 	}
 }
+
+.cardDialogBody {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+
+	h1 {
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: medium;
+	}
+
+	p {
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: small;
+		color: colors.$grey;
+	}
+}
+
+.subTasks {
+	display: inline-block;
+}
+
+.subTasksChecks {
+	font-family: "Plus Jakarta Sans", sans-serif;
+	font-size: small;
+	color: colors.$grey;
+	background-color: colors.$light-purple;
+	padding: 10px;
+	margin: 10px;
+}

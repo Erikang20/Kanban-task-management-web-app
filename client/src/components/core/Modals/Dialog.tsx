@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRef, useEffect } from "react";
+import styles from "./styles.module.scss";
 
 type Props = {
-	title: string;
 	children: React.ReactNode;
 	className?: any;
 	toggleDialog: () => void;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Dialog = forwardRef<HTMLDialogElement, Props>(
-	({ children, toggleDialog, className, title }, ref) => {
+	({ children, toggleDialog }, ref) => {
 		const searchParams = useSearchParams();
 		const dialogRef = useRef<null | HTMLDialogElement>(null);
 		const showModal = searchParams.get("showModal");
@@ -25,10 +25,10 @@ export const Dialog = forwardRef<HTMLDialogElement, Props>(
 		}, [showModal]);
 
 		return (
-			<div className={className}>
+			<div className={styles.dialogContainer}>
 				{showModal === "y" && (
 					<dialog
-						className={className}
+						className={styles.dialogBody}
 						ref={dialogRef}
 						onClick={(e) => {
 							if (e.currentTarget === e.target) {
@@ -36,7 +36,7 @@ export const Dialog = forwardRef<HTMLDialogElement, Props>(
 							}
 						}}
 					>
-						<div>{children}</div>
+						{children}
 					</dialog>
 				)}
 			</div>
