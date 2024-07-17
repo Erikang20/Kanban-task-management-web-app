@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "@components/Header/ThreeDotsMenu";
 import { Dialog } from "@components/core/Modals/Dialog";
+import logoDown from "@assets/icon-chevron-down.svg";
 
 export const Cards = () => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
@@ -29,13 +31,21 @@ export const Cards = () => {
 						<Dialog onClose={closeModal} toggleDialog={onToggle}>
 							{
 								<div className={styles.cardDialogBody}>
-									<ThreeDotsMenu />
-									<div>
+									<div className={styles.cardDialogHeading}>
 										<h1>
 											Research Pricing points of various
 											competitors and trial different
 											business models
 										</h1>
+										<span
+											className={
+												styles.dropDownBtnContainer
+											}
+										>
+											<ThreeDotsMenu />
+										</span>
+									</div>
+									<div className={styles.cardDialogMainBody}>
 										<p>
 											We know what we're planning to build
 											for version one. Now we need to
@@ -51,8 +61,15 @@ export const Cards = () => {
 													styles.subTasksChecks
 												}
 											>
-												<input type="checkbox" />
-												<label>
+												<input
+													type="checkbox"
+													checked={true}
+												/>
+												<label
+													className={
+														styles.checkboxLabel
+													}
+												>
 													Research competitor pricing
 													and business models
 												</label>
@@ -63,19 +80,31 @@ export const Cards = () => {
 													styles.subTasksChecks
 												}
 											>
-												<input type="checkbox" />
-												<label>
+												<input
+													type="checkbox"
+													checked={true}
+												/>
+												<label
+													className={
+														styles.checkboxLabel
+													}
+												>
 													Outline a business model
 													that works for our solution
 												</label>
 											</div>
+
 											<div
 												className={
 													styles.subTasksChecks
 												}
 											>
 												<input type="checkbox" />
-												<label>
+												<label
+													className={
+														styles.checkboxLabel
+													}
+												>
 													Talk to potential customers
 													about our proposed solution
 													and ask for fair price
@@ -83,21 +112,29 @@ export const Cards = () => {
 												</label>
 											</div>
 										</div>
-										<div>
-											<form>
-												<label>Current Status</label>
-												<select>
-													<option value="Doing">
-														Doing
-													</option>
-													<option value="Todo">
-														Todo
-													</option>
-													<option value="Done">
-														Done
-													</option>
-												</select>
-											</form>
+										<div className={styles.cardDialogForm}>
+											<label
+												className={styles.formSubTasks}
+											>
+												Current Status
+											</label>
+											<select>
+												<Image
+													src={logoDown}
+													width="20"
+													height="10"
+													alt="icon"
+												/>
+												<option value="Doing">
+													Doing
+												</option>
+												<option value="Todo">
+													Todo
+												</option>
+												<option value="Done">
+													Done
+												</option>
+											</select>
 										</div>
 									</div>
 								</div>

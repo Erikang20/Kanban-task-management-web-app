@@ -13,11 +13,13 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 50%;
+	top: 60%;
 	border: 1px solid;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
+	border: none;
+	border-radius: 10px;
 }
