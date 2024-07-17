@@ -1,0 +1,177 @@
+@use "@styles/colors.module.scss";
+
+.sidebar {
+	justify-content: space-between;
+
+	.allBoards {
+		color: colors.$grey;
+		padding-left: 16px;
+	}
+
+	.boardIconBtn {
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+
+	.linkSection {
+		display: flex;
+		flex-direction: column;
+		color: colors.$grey;
+	}
+
+	.sidebarLink {
+		text-decoration: none;
+		color: colors.$grey;
+		padding: 16px 0;
+
+		&:hover {
+			background-color: colors.$main-purple;
+			color: colors.$white;
+			border-radius: 0 45px 45px 0;
+			max-height: 80px;
+		}
+	}
+
+	.createNewBoardLink {
+		color: colors.$main-purple;
+	}
+
+	.createNewBoardLink:hover {
+		cursor: pointer;
+	}
+
+	&.isDisplayed {
+		width: 300px;
+		height: 90vh;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+
+		.sliderSection {
+			position: relative;
+			display: inline-block;
+			width: 45px;
+			height: 25px;
+			padding-left: 16px;
+		}
+		.sliderSection input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: colors.$main-purple;
+			border-radius: 24px;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 15px;
+			width: 13px;
+			left: 4px;
+			bottom: 4px;
+			background-color: colors.$white;
+			transition: 0.4s;
+			border-radius: 50%;
+		}
+
+		input:checked + .slider:before {
+			transform: translateX(26px);
+		}
+
+		.lightDarkModeIconSection {
+			background-color: #f4f7fd;
+			height: 48px;
+			display: flex;
+			align-items: center;
+			max-height: 50px;
+			justify-content: center;
+			top: 300px;
+			margin: 0 16px 0 35px;
+			border-radius: 9px;
+
+			&.isDarkMode {
+				background-color: #20212c;
+			}
+		}
+	}
+
+	.lightModeIcon {
+		margin-right: 20px;
+	}
+
+	.darkModeIcon {
+		margin-left: 20px;
+	}
+}
+
+/**
+  * Hide SideBar button section
+  */
+.sideBarBtnContainer {
+	display: flex;
+	white-space: nowrap;
+	max-height: 80px;
+}
+
+.sideBarBtn {
+	border: none;
+
+	.hideSpan {
+		padding-left: 10px;
+		margin-right: 70px;
+		height: 50px;
+		overflow: hidden;
+		max-height: 50px;
+	}
+
+	&.isShowed {
+		border: none;
+		padding: 0 30px 20px 0;
+		font-weight: 700;
+		font-size: 16px;
+		color: colors.$grey;
+		column-gap: 10px;
+		border: none;
+		border-radius: 0 45px 45px 0;
+		transition: 200ms ease-in;
+		background-color: transparent;
+		margin-bottom: 20px;
+		margin-top: 10px;
+
+		.img {
+			top: 6px;
+			margin-left: 16px;
+			padding-left: 30px;
+		}
+
+		&:hover {
+			background-color: #e4ebfa;
+			color: colors.$main-purple;
+			left: 0;
+			padding-top: 10px;
+			max-height: 80px;
+		}
+	}
+
+	&.isHidden {
+		border: none;
+		border-radius: 0 45px 45px 0;
+		padding: 10px 20px;
+		background-color: colors.$main-purple;
+		position: absolute;
+		bottom: 20px;
+
+		&:hover {
+			background-color: colors.$hovered-purple;
+		}
+	}
+}

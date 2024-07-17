@@ -9,14 +9,23 @@
 	flex-wrap: wrap;
 }
 
+.boardContainer {
+	margin: 20px;
+	width: 90%;
+	height: 90%;
+	background-color: transparent;
+}
+
+.boardContainerLists {
+	clear: both;
+}
+
 .empty {
-	color: #8895a8;
+	color: colors.$grey;
 	font-style: normal;
 	font-size: 18px;
 	line-height: 23px;
 	flex: 1;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	text-align: center;
 }
