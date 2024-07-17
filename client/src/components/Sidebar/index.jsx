@@ -56,6 +56,18 @@ const Sidebar = () => {
 								<span className={styles.allBoards}>
 									ALL BOARDS
 								</span>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Platform Launch
+								</a>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Marketing Plan
+								</a>
+								<a href="#" className={styles.sidebarLink}>
+									<BoardIcon />
+									Roadmap
+								</a>
 								{data?.boards?.map((singleBoard) => (
 									<a href="#" className={styles.sidebarLink}>
 										<BoardIcon />

@@ -23,6 +23,9 @@ const AddNewBoardModal = ({
 	const [createBoard] = useMutation(CREATE_BOARD, {
 		refetchQueries: [{ query: GET_BOARDS }],
 	});
+	const [errors, setErrors] = useState({
+		boardName: "",
+	});
 
 	const handleBoardNameChange = (e) => {
 		setInputValue(e.target.value);
@@ -48,11 +51,13 @@ const AddNewBoardModal = ({
 
 	const handleCreateNewBoardSubmit = async (e) => {
 		// e.preventDefault();
-		const newBoardName = boardName;
-		// setNewBoard({boardName: newBoardName, boardColumns: boardColumns})
-		await createBoard({ variables: { name: boardName } });
-
-		setAddNewBoardModalOpen(false);
+		if (boardName) {
+			setErrors({ boardName: "" });
+			await createBoard({ variables: { name: boardName } });
+			setAddNewBoardModalOpen(false);
+		} else {
+			setErrors({ boardName: "Board name is required" });
+		}
 	};
 
 	return (
@@ -74,6 +79,11 @@ const AddNewBoardModal = ({
 								className={styles.modalInput}
 								onChange={handleBoardNameChange}
 							/>
+							{errors.boardName && (
+								<span className={styles.error}>
+									{errors.boardName}
+								</span>
+							)}
 						</FormGroup>
 
 						<FormGroup>
