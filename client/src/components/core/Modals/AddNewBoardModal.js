@@ -1,123 +1,140 @@
-
 // This is with reactstrap and bootstrap
-import {
-    Modal,
-    ModalBody,
-    FormGroup,
-    Label,
-    Form,
-    Input
-} from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './Modals.module.css';
-import { Button } from '../Button';
-import { useState } from 'react';
+import { Modal, ModalBody, FormGroup, Label, Form, Input } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./Modals.module.css";
+import { Button } from "../Button";
+import { useState } from "react";
 import Image from "next/image";
 import cross from "@assets/icon-cross.svg";
+import { useMutation } from "@apollo/client";
+import { CREATE_BOARD, GET_BOARDS } from "../../../lib/graphql/queries";
 
-const AddNewBoardModal = ({ addNewBoardModalOpen, setAddNewBoardModalOpen }) => {
-    const [inputValue, setInputValue] = useState('');
-    const [boardName, setBoardName] = useState('');
-    const [boardColumns, setBoardColumns] = useState(['Todo', 'Doing']);
-    const [newBoard, setNewBoard] = useState({boardName: boardName, boardColumns: boardColumns});
+const AddNewBoardModal = ({
+	addNewBoardModalOpen,
+	setAddNewBoardModalOpen,
+}) => {
+	const [inputValue, setInputValue] = useState("");
+	const [boardName, setBoardName] = useState("");
+	const [boardColumns, setBoardColumns] = useState(["Todo", "Doing"]);
+	const [newBoard, setNewBoard] = useState({
+		boardName: boardName,
+		boardColumns: boardColumns,
+	});
+	const [createBoard] = useMutation(CREATE_BOARD, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
 
-    const handleBoardNameChange = (e) => {
-        setInputValue(e.target.value);
-        const newBoardName = e.target.value;
-        setBoardName(newBoardName);
-    };
+	const handleBoardNameChange = (e) => {
+		setInputValue(e.target.value);
+		const newBoardName = e.target.value;
+		setBoardName(newBoardName);
+	};
 
-    const handleBoardColumnChange = (e) => {
-        setInputValue(e.target.value);
-        boardColumns[e.target.id] = e.target.value;
-        setBoardColumns(boardColumns);
-    };
+	const handleBoardColumnChange = (e) => {
+		setInputValue(e.target.value);
+		boardColumns[e.target.id] = e.target.value;
+		setBoardColumns(boardColumns);
+	};
 
-    const handleAddNewColumnBtnClick = () => {
-        setBoardColumns([...boardColumns, ""])
-    }
+	const handleAddNewColumnBtnClick = () => {
+		setBoardColumns([...boardColumns, ""]);
+	};
 
-    const handleXBtnClick = (e) => {
-        const newBoardColumns = [...boardColumns];
-        newBoardColumns.splice(e.target.id, 1);
-        setBoardColumns(newBoardColumns);
-    }
+	const handleXBtnClick = (e) => {
+		const newBoardColumns = [...boardColumns];
+		newBoardColumns.splice(e.target.id, 1);
+		setBoardColumns(newBoardColumns);
+	};
 
-    const handleCreateNewBoardSubmit = (e) => {
-        // e.preventDefault();
-        const newBoardName = boardName;
-        setNewBoard({boardName: newBoardName, boardColumns: boardColumns})
-        setAddNewBoardModalOpen(false);
-    }
+	const handleCreateNewBoardSubmit = async (e) => {
+		// e.preventDefault();
+		const newBoardName = boardName;
+		// setNewBoard({boardName: newBoardName, boardColumns: boardColumns})
+		await createBoard({ variables: { name: boardName } });
 
-    return (
-        <>
-            <Modal className={styles.modalDiv} isOpen={addNewBoardModalOpen}>
-                <ModalBody>
-                    <h5 className={styles.modalHeader}>Add New Board</h5>
-                    <Form onSubmit={() => setAddNewBoardModalOpen(false)}>
-                        <FormGroup>
-                            <Label className={styles.modalLabel} htmlFor='boardName'>
-                                Board Name
-                            </Label>
-                            <Input
-                                name='boardName'
-                                placeholder='e.g. Web Design'
-                                className={styles.modalInput}
-                                onChange={handleBoardNameChange}
-                            />
-                        </FormGroup>
+		setAddNewBoardModalOpen(false);
+	};
 
-                        <FormGroup >
-                            <Label className={styles.modalLabel} htmlFor='boardColumns'>
-                                Board Columns
-                            </Label>
-                            <div>
-                                {boardColumns.map((item, index) => {
-                                    return (
-                                        <div className={styles.boardColumnItemContainer}>
-                                            <Input
-                                                id={index}
-                                                name='boardColumns'
-                                                className={styles.modalInput}
-                                                value={item}
-                                                onChange={handleBoardColumnChange}
-                                            />
-                                            <button
-                                                id={index}
-                                                type='button'
-                                                className={styles.xBtn}
-                                                onClick={handleXBtnClick}
+	return (
+		<>
+			<Modal className={styles.modalDiv} isOpen={addNewBoardModalOpen}>
+				<ModalBody>
+					<h5 className={styles.modalHeader}>Add New Board</h5>
+					<Form onSubmit={() => setAddNewBoardModalOpen(false)}>
+						<FormGroup>
+							<Label
+								className={styles.modalLabel}
+								htmlFor="boardName"
+							>
+								Board Name
+							</Label>
+							<Input
+								name="boardName"
+								placeholder="e.g. Web Design"
+								className={styles.modalInput}
+								onChange={handleBoardNameChange}
+							/>
+						</FormGroup>
 
-                                            >
-                                                <Image
-                                                    id={index}
-                                                    className={styles.cross}
-                                                    src={cross}
-                                                    alt="X"
-                                                />
-                                            </button>
-                                        </div>
-                                    )
-                                })}
-                            </div>
+						<FormGroup>
+							<Label
+								className={styles.modalLabel}
+								htmlFor="boardColumns"
+							>
+								Board Columns
+							</Label>
+							<div>
+								{boardColumns.map((item, index) => {
+									return (
+										<div
+											className={
+												styles.boardColumnItemContainer
+											}
+										>
+											<Input
+												id={index}
+												name="boardColumns"
+												className={styles.modalInput}
+												value={item}
+												onChange={
+													handleBoardColumnChange
+												}
+											/>
+											<button
+												id={index}
+												type="button"
+												className={styles.xBtn}
+												onClick={handleXBtnClick}
+											>
+												<Image
+													id={index}
+													className={styles.cross}
+													src={cross}
+													alt="X"
+												/>
+											</button>
+										</div>
+									);
+								})}
+							</div>
 
-                            <Button
-                                className={styles.modalBtnNewCol}
-                                variant='secondary'
-                                onClick={handleAddNewColumnBtnClick}
-                            >
-                                + Add New Column
-                            </Button>
-                        </FormGroup>
+							<Button
+								className={styles.modalBtnNewCol}
+								variant="secondary"
+								onClick={handleAddNewColumnBtnClick}
+							>
+								+ Add New Column
+							</Button>
+						</FormGroup>
 
-                        <Button onClick={handleCreateNewBoardSubmit}>Create New Board</Button>
-
-                    </Form>
-                </ModalBody>
-            </Modal>
-        </>
-    )
-}
+						<Button onClick={handleCreateNewBoardSubmit}>
+							Create New Board
+						</Button>
+					</Form>
+				</ModalBody>
+			</Modal>
+		</>
+	);
+};
 
 export default AddNewBoardModal;

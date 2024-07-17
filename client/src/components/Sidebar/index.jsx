@@ -11,6 +11,8 @@ import {
 	GlobalStyles,
 } from "@components/Home/theme";
 import { BoardIcon } from "./boardIcon";
+import { useQuery } from "@apollo/client";
+import { GET_BOARDS } from "../../lib/graphql/queries";
 
 const StyledSidebarComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -21,6 +23,7 @@ const Sidebar = () => {
 	const [isToggled, setIsToggle] = useState(false);
 	const [addNewBoardModalOpen, setAddNewBoardModalOpen] = useState(false);
 	const [theme, setTheme] = useState("light");
+	const { loading, error, data } = useQuery(GET_BOARDS);
 
 	const themeToggler = () => {
 		theme === "light" ? setTheme("dark") : setTheme("light");
@@ -53,18 +56,12 @@ const Sidebar = () => {
 								<span className={styles.allBoards}>
 									ALL BOARDS
 								</span>
-								<a href="#" className={styles.sidebarLink}>
-									<BoardIcon />
-									Platform Launch
-								</a>
-								<a href="#" className={styles.sidebarLink}>
-									<BoardIcon />
-									Marketing Plan
-								</a>
-								<a href="#" className={styles.sidebarLink}>
-									<BoardIcon />
-									Roadmap
-								</a>
+								{data?.boards?.map((singleBoard) => (
+									<a href="#" className={styles.sidebarLink}>
+										<BoardIcon />
+										{singleBoard.name}
+									</a>
+								))}
 								<a
 									href="#"
 									className={`${styles.createNewBoardLink} ${styles.sidebarLink}`}
