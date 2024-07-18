@@ -32,3 +32,68 @@
 		color: black;
 	}
 }
+
+.cardDialogHeading {
+	display: flex;
+	margin-bottom: 20px;
+
+	h1 {
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: large;
+		font-weight: bold;
+		line-height: 19px;
+	}
+
+	.dropDownBtnContainer {
+		margin-left: 30px;
+	}
+}
+
+.cardDialogBody {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+
+	p,
+	.formSubTasks {
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: small;
+		color: colors.$grey;
+		line-height: 19px;
+	}
+
+	p:first-of-type {
+		font-weight: lighter;
+	}
+}
+
+.cardDialogMainBody {
+	margin-top: 10px;
+}
+
+.subTasksChecks {
+	display: flex;
+	font-family: "Plus Jakarta Sans", sans-serif;
+	font-size: small;
+	color: colors.$grey;
+	background-color: colors.$light-purple;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+
+	.checkboxLabel {
+		padding-left: 10px;
+	}
+}
+
+.cardDialogForm select {
+	appearance: none;
+	width: 100%;
+	font-family: "Plus Jakarta Sans", sans-serif;
+	font-size: small;
+	padding: 10px;
+	background-color: colors.$white;
+	border: 1px solid colors.$grey;
+	border-radius: 0.25rem;
+	cursor: pointer;
+}
