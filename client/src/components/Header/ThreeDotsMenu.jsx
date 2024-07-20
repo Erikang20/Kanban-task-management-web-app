@@ -42,7 +42,8 @@ export const ThreeDotsMenu = () => {
 	};
 
 	const handleDeleteBoard = () => {
-		alert("deleted");
+		// TODO: Implement delete board functionality
+		// This should delete the current board and its content
 		setIsDeleteModalOpen(false);
 	};
 
