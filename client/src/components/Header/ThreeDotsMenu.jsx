@@ -2,6 +2,7 @@ import verticalEllipsis from "@assets/icon-vertical-ellipsis.svg";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
 
 export const ThreeDotsMenu = () => {
 	const [menuVisible, setMenuVisible] = useState(false);
@@ -29,6 +30,22 @@ export const ThreeDotsMenu = () => {
 		};
 	}, [menuVisible]);
 
+	//handle delete modal options
+	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+	const handleDeleteButtonClick = () => {
+		setIsDeleteModalOpen(true);
+	};
+
+	const handleCloseButtonClick = () => {
+		setIsDeleteModalOpen(false);
+	};
+
+	const handleDeleteBoard = () => {
+		alert("deleted");
+		setIsDeleteModalOpen(false);
+	};
+
 	return (
 		<div className={styles.container} ref={menuRef}>
 			<Image
@@ -43,8 +60,18 @@ export const ThreeDotsMenu = () => {
 				<div className={styles.menu}>
 					<ul>
 						<li className={styles.edit}>Edit Board</li>
-						<li className={styles.delete}>Delete Board</li>
+						<li
+							className={styles.delete}
+							onClick={handleDeleteButtonClick}
+						>
+							Delete Board
+						</li>
 					</ul>
+					<DeleteBoardModal
+						isOpen={isDeleteModalOpen}
+						onClose={handleCloseButtonClick}
+						onDelete={handleDeleteBoard}
+					/>
 				</div>
 			)}
 		</div>
