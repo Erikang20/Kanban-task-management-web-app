@@ -3,13 +3,35 @@
 .headerRoot {
 	display: flex;
 	height: 100px;
-	width: 100vw;
+	width: 100%;
 	justify-content: space-between;
+	// align-items: center;
 }
 
 .logo {
-	padding-top: 30px;
-	padding-left: 35px;
+	height: 25px;
+	width: 150px;
+}
+
+.headerLogoDiv {
+	width: 300px;
+	padding-left: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.headerTextDiv {
+	display: flex;
+	width: calc(100% - 300px);
+	padding-left: 20px;
+	justify-content: space-between;
+	align-items: center;
+
+}
+
+.boardTitle {
+	font-size: var(--font-size-large);
+	font-weight: bold;
 }
 
 .headerButtons {
