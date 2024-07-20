@@ -1,4 +1,3 @@
-
 .modalBtnNewCol {
     margin: 1rem 0;
 }
@@ -49,4 +48,62 @@
 }
 
 
+/*Style for DeleteBoardModal*/
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+}
 
+.modalContent {
+    width: 45%;
+    background: white;
+    padding: 45px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.modalContent h4 {
+    color: #EA5555;
+    padding-bottom: 20px;
+}
+
+.modalContent p {
+    color: #828FA3;
+    padding-bottom: 10px;
+}
+
+.deleteModalButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    column-gap: 2%;
+    margin-top: 20px;
+}
+
+.deleteModalButtons button {
+    width: 100%;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 45px;
+    border: none;
+    font-weight: 500;
+}
+
+.deleteButton {
+    color: white;
+    background-color: #EA5555;
+}
+
+.closeButton {
+    color: #635FC7;
+    background-color: #625fc727;
+}
