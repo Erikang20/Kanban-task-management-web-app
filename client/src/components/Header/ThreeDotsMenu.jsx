@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
+import EditBoardModal from "@components/core/Modals/EditBoardModal";
 
 export const ThreeDotsMenu = () => {
 	const [menuVisible, setMenuVisible] = useState(false);
@@ -32,6 +33,7 @@ export const ThreeDotsMenu = () => {
 
 	//handle delete modal options
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+	const [editBoardModalOpen, setEditBoardModalOpen] = useState(false);
 
 	const handleDeleteButtonClick = () => {
 		setIsDeleteModalOpen(true);
@@ -39,6 +41,7 @@ export const ThreeDotsMenu = () => {
 
 	const handleCloseButtonClick = () => {
 		setIsDeleteModalOpen(false);
+		setEditBoardModalOpen(false);
 	};
 
 	const handleDeleteBoard = () => {
@@ -46,7 +49,21 @@ export const ThreeDotsMenu = () => {
 		// This should delete the current board and its content
 		setIsDeleteModalOpen(false);
 	};
+	//handle delete modal options
 
+	const handleEditButtonClick = () => {
+		setEditBoardModalOpen(true);
+	};
+
+	const handleEditBoard = () => {
+		// TODO: Implement delete board functionality
+		// This should delete the current board and its content
+		setEditBoardModalOpen(false);
+	};
+	const handleToggleEditBoard = () => {
+		setEditBoardModalOpen(!editBoardModalOpen);
+	};
+	console.log(editBoardModalOpen);
 	return (
 		<div className={styles.container} ref={menuRef}>
 			<Image
@@ -60,7 +77,12 @@ export const ThreeDotsMenu = () => {
 			{menuVisible && (
 				<div className={styles.menu}>
 					<ul>
-						<li className={styles.edit}>Edit Board</li>
+						<li
+							className={styles.edit}
+							onClick={handleEditButtonClick}
+						>
+							Edit Board
+						</li>
 						<li
 							className={styles.delete}
 							onClick={handleDeleteButtonClick}
@@ -72,6 +94,12 @@ export const ThreeDotsMenu = () => {
 						isOpen={isDeleteModalOpen}
 						onClose={handleCloseButtonClick}
 						onDelete={handleDeleteBoard}
+					/>
+
+					<EditBoardModal
+						editBoardModalOpen={editBoardModalOpen}
+						setEditBoardModalOpen={setEditBoardModalOpen}
+						handleToggleEditBoard={handleCloseButtonClick}
 					/>
 				</div>
 			)}
