@@ -8,7 +8,7 @@ import EditBoardModal from "@components/core/Modals/EditBoardModal";
 export const ThreeDotsMenu = ({ board }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 	const menuRef = useRef(null);
-	console.log(board?.id);
+
 	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);
 	};
@@ -57,7 +57,7 @@ export const ThreeDotsMenu = ({ board }) => {
 	const handleToggleEditBoard = () => {
 		setEditBoardModalOpen(!editBoardModalOpen);
 	};
-	console.log(editBoardModalOpen);
+	
 	return (
 		<div className={styles.container} ref={menuRef}>
 			<Image

@@ -18,7 +18,6 @@ export const MainPage = () => {
 		boardId = parts.pop();
 		boardName = parts.join(" ");
 	}
-	console.log(boardName, boardId);
 	const { loading, error, data } = useQuery(GET_BOARD_BY_ID, {
 		skip: !boardId,
 		variables: { id: boardId },
@@ -37,7 +36,7 @@ export const MainPage = () => {
 	}, [slug]);
 	if (loading) return <p>Loading...</p>;
 	if (error) return null;
-	console.log(data);
+
 	return (
 		<main className={styles.board}>
 			<div className={styles.boardContainer}>

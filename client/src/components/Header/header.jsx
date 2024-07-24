@@ -25,7 +25,7 @@ if (slug) {
 	boardId = parts.pop();
 	boardName = parts.join(" ");
 }
-console.log(boardName, boardId);
+
 const { loading, error, data } = useQuery(GET_BOARD_BY_ID, {
 	skip: !boardId, 
 	variables: { id: boardId },

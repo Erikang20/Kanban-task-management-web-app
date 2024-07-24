@@ -44,7 +44,7 @@ const Sidebar = () => {
 		[styles.isDisplayed]: !isHidden,
 		[styles.isDarkMode]: theme === "dark",
 	});
-	console.log(data?.boards);
+
 	const router = useRouter();
 	const { slug } = router.query;
 
@@ -55,7 +55,7 @@ const Sidebar = () => {
 		boardId = parts.pop();
 		boardName = parts.join(" ");
 	}
-	console.log(boardName, boardId);
+
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
