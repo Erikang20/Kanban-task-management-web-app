@@ -23,17 +23,15 @@ export const Cards = () => {
 		dialogRef.current?.close();
 		close();
 	};
-	  const router = useRouter();
-		const { pathname, query } = router;
+	const router = useRouter();
+	const { pathname, query } = router;
 
-		// Construct the new query parameters
-		const newQuery = { ...query, showModal: "y" };
+	const newQuery = { ...query, showModal: "y" };
 
-		// Create the href with the current pathname and updated query parameters
-		const href = {
-			pathname,
-			query: newQuery,
-		};
+	const href = {
+		pathname,
+		query: newQuery,
+	};
 
 	return (
 		<div className={styles.cardContainer}>
