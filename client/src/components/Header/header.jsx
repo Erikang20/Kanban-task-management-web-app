@@ -3,9 +3,12 @@ import AddNewTaskBtn from "@components/Header/addTaskBtn";
 import LogoHeader from "@components/Header/logo";
 import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "./ThreeDotsMenu";
+
 import { useRouter } from "next/router";
 import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
+import BoardTitle from "./BoardTitle";
+
 
 
 export const Header = () => {
@@ -38,13 +41,23 @@ if (loading) return <p>Loading...</p>;
 if (error) return null;
 	return (
 		<div className={styles.headerRoot}>
-			<LogoHeader theme={theme} />
-			{!isEmpty && (
+    <div className={styles.headerLogoDiv}>
+				<LogoHeader theme={theme} />
+			</div>
+			<div className={styles.headerTextDiv}>
+				<div>
+					<BoardTitle />
+				</div>
+{!isEmpty && (
 				<div className={styles.headerButtons}>
 					<AddNewTaskBtn board={data?.board} />
 					<ThreeDotsMenu board={data?.board} />
 				</div>
-			)}
+)}
+
+			</div>
+
+
 		</div>
 	);
 };
