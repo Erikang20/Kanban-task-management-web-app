@@ -2,28 +2,32 @@
 
 .sidebar {
 	justify-content: space-between;
+	font-family: var(--font-regular);
+	font-size: var(--font-size-regular);
 
 	.linkSection {
 		display: flex;
 		flex-direction: column;
 		color: colors.$grey;
+		font-weight: 500;
 	}
 
 	.allBoards {
 		color: colors.$grey;
-		// padding: 8px 0 8px 16px;
-		padding-left: 16px;
+		padding-left: 32px;
 		margin: 12px 0;
+		font-size: var(--font-size-tiny);
+		letter-spacing: 1.5px;
 
 	}
 
 	.sidebarLink {
 		text-decoration: none;
 		color: colors.$grey;
-		padding: 12px 16px;
+		padding: 12px 32px;
 		border-radius: 0 45px 45px 0;
 		max-height: 70px;
-		width:90%;
+		width: 90%;
 		display: flex;
 		align-items: center;
 
@@ -74,6 +78,10 @@
 			bottom: 0;
 			background-color: colors.$main-purple;
 			border-radius: 24px;
+
+			&:hover {
+				background-color: var(--main-purple-hover);
+			}
 		}
 
 		.slider:before {
@@ -131,39 +139,31 @@
 	border: none;
 
 	.hideSpan {
-		padding-left: 10px;
-		margin-right: 70px;
-		height: 50px;
 		overflow: hidden;
 		max-height: 50px;
 	}
 
 	&.isShowed {
-		border: none;
-		padding: 0 30px 20px 0;
-		font-weight: 700;
+		display: flex;
+		align-items: center;
+		font-weight: 500;
 		font-size: 16px;
 		color: colors.$grey;
-		column-gap: 10px;
-		border: none;
 		border-radius: 0 45px 45px 0;
 		transition: 200ms ease-in;
 		background-color: transparent;
-		margin-bottom: 20px;
-		margin-top: 10px;
+		max-height: 70px;
+		padding: 12px 0;
+		width: 90%;
+		
 
 		.img {
-			top: 6px;
-			margin-left: 16px;
-			padding-left: 30px;
+			margin-left: 32px;
 		}
 
 		&:hover {
-			background-color: #e4ebfa;
-			color: colors.$main-purple;
-			left: 0;
-			padding-top: 10px;
-			max-height: 80px;
+			background-color: var(--secondary-purple);
+			color: var(--main-purple);
 		}
 	}
 
