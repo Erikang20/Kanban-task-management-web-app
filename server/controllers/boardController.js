@@ -15,7 +15,7 @@ const getBoards = async () => {
 
 const createBoard = async (name) => {
   try {
-    console.log(name);
+  
     const board = new Board({ name });
 
     await board.save();
@@ -25,6 +25,7 @@ const createBoard = async (name) => {
     throw new Error("Error creating board");
   }
 };
+
 const getBoardById = async (id) => {
   try {
     const board = await Board.findById(id).populate("columns.tasks"); 
