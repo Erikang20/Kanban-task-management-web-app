@@ -3,38 +3,38 @@
 .sidebar {
 	justify-content: space-between;
 
-	.allBoards {
-		color: colors.$grey;
-		padding-left: 16px;
-	}
-
 	.linkSection {
 		display: flex;
 		flex-direction: column;
 		color: colors.$grey;
 	}
 
+	.allBoards {
+		color: colors.$grey;
+		// padding: 8px 0 8px 16px;
+		padding-left: 16px;
+		margin: 12px 0;
+
+	}
+
 	.sidebarLink {
 		text-decoration: none;
 		color: colors.$grey;
-		padding: 16px 16px;
+		padding: 12px 16px;
+		border-radius: 0 45px 45px 0;
+		max-height: 70px;
+		width:90%;
+		display: flex;
+		align-items: center;
 
 		&:hover {
 			background-color: var(--secondary-purple);
 			color: var(--main-purple);
-			border-radius: 0 45px 45px 0;
-			max-height: 80px;
-			// stroke: var(--main-purple);
-			// stroke-width: .4px;
-			// fill: var(--main-purple);
 		}
 	}
 
 	.boardIconBtn {
-		// padding-left: 20px;
-		// padding-right: 15px;
 		margin-right: 16px;
-		fill: var(--main-purple);
 	}
 
 	.createNewBoardLink {
