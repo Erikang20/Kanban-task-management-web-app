@@ -41,6 +41,14 @@
 		margin-right: 16px;
 	}
 
+	&.isDarkMode {
+		.sidebarLink{
+			&:hover {
+				background-color: white;
+			}
+		}
+	}
+
 	.createNewBoardLink {
 		color: colors.$main-purple;
 	}
@@ -63,6 +71,7 @@
 			height: 25px;
 			padding-left: 16px;
 		}
+
 		.sliderSection input {
 			opacity: 0;
 			width: 0;
@@ -96,7 +105,7 @@
 			border-radius: 50%;
 		}
 
-		input:checked + .slider:before {
+		input:checked+.slider:before {
 			transform: translateX(26px);
 		}
 
@@ -155,7 +164,7 @@
 		max-height: 70px;
 		padding: 12px 0;
 		width: 90%;
-		
+
 
 		.img {
 			margin-left: 32px;
