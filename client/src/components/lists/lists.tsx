@@ -10,7 +10,7 @@ const stringNames = {
 	DONE: "GREEN",
 };
 
-export const Lists = () => {
+export const Lists = ({board}) => {
 	return (
 		<div className={styles.listContainer}>
 			{Object.entries(stringNames).map(([key, color]) => (

@@ -5,10 +5,10 @@ import styles from "./styles.module.scss";
 import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
 import EditBoardModal from "@components/core/Modals/EditBoardModal";
 
-export const ThreeDotsMenu = () => {
+export const ThreeDotsMenu = ({ board }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 	const menuRef = useRef(null);
-
+	console.log(board?.id);
 	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);
 	};
@@ -31,7 +31,6 @@ export const ThreeDotsMenu = () => {
 		};
 	}, [menuVisible]);
 
-	//handle delete modal options
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 	const [editBoardModalOpen, setEditBoardModalOpen] = useState(false);
 
@@ -45,19 +44,14 @@ export const ThreeDotsMenu = () => {
 	};
 
 	const handleDeleteBoard = () => {
-		// TODO: Implement delete board functionality
-		// This should delete the current board and its content
 		setIsDeleteModalOpen(false);
 	};
-	//handle delete modal options
 
 	const handleEditButtonClick = () => {
 		setEditBoardModalOpen(true);
 	};
 
 	const handleEditBoard = () => {
-		// TODO: Implement delete board functionality
-		// This should delete the current board and its content
 		setEditBoardModalOpen(false);
 	};
 	const handleToggleEditBoard = () => {

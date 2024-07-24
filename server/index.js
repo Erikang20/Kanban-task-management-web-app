@@ -1,7 +1,7 @@
 const express = require("express");
 const { ApolloServer, gql } = require("apollo-server-express");
 const connectDB = require("./config/db");
-const { getBoards, createBoard } = require("./controllers/boardController");
+const { getBoards, createBoard, getBoardById } = require("./controllers/boardController");
 const { createColumn } = require("./controllers/colunmController");
 const { createTask } = require("./controllers/taskController");
 require("dotenv").config();
@@ -37,11 +37,16 @@ const typeDefs = gql`
 
   type Query {
     boards: [Board]
+    board(id: ID!): Board
   }
 
   type Mutation {
     createBoard(name: String!): Board
+    updateBoard(id: ID!, name: String!): Board
+    deleteBoard(id: ID!): Boolean
     createColumn(boardId: ID!, name: String!): ColumnItem
+    updateColumn(boardId: ID!, id: ID!, name: String!): ColumnItem
+    deleteColumn(boardId: ID!, id: ID!): Boolean
     createTask(
       columnId: ID!
       title: String!
@@ -49,6 +54,15 @@ const typeDefs = gql`
       status: String
       subtasks: [SubTaskInput]
     ): Task
+    updateTask(
+      columnId: ID!
+      id: ID!
+      title: String
+      description: String
+      status: String
+      subtasks: [SubTaskInput]
+    ): Task
+    deleteTask(columnId: ID!, id: ID!): Boolean
   }
 
   input SubTaskInput {
@@ -60,12 +74,20 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     boards: () => getBoards(),
+    board: (_, { id }) => getBoardById(id), 
   },
   Mutation: {
     createBoard: (_, { name }) => createBoard(name),
+    updateBoard: (_, { id, name }) => updateBoard(id, name),
+    deleteBoard: (_, { id }) => deleteBoard(id),
     createColumn: (_, { boardId, name }) => createColumn(boardId, name),
+    updateColumn: (_, { boardId, id, name }) => updateColumn(boardId, id, name),
+    deleteColumn: (_, { boardId, id }) => deleteColumn(boardId, id),
     createTask: (_, { columnId, title, description, status, subtasks }) =>
       createTask(columnId, title, description, status, subtasks),
+    updateTask: (_, { columnId, id, title, description, status, subtasks }) =>
+      updateTask(columnId, id, title, description, status, subtasks),
+    deleteTask: (_, { columnId, id }) => deleteTask(columnId, id),
   },
 };
 

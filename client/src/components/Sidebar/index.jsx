@@ -13,6 +13,8 @@ import {
 import { BoardIcon } from "./boardIcon";
 import { useQuery } from "@apollo/client";
 import { GET_BOARDS } from "../../lib/graphql/queries";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const StyledSidebarComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -42,7 +44,21 @@ const Sidebar = () => {
 		[styles.isDisplayed]: !isHidden,
 		[styles.isDarkMode]: theme === "dark",
 	});
+	console.log(data?.boards);
+	const router = useRouter();
+	const { slug } = router.query;
 
+	let boardName = "";
+	let boardId = "";
+	if (slug) {
+		const parts = slug.split("-");
+		boardId = parts.pop();
+		boardName = parts.join(" ");
+	}
+	console.log(boardName, boardId);
+
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error: {error.message}</p>;
 	return (
 		<ThemeProvider
 			theme={theme === "light" ? lightThemeSideBar : darkThemeSideBar}
@@ -68,12 +84,33 @@ const Sidebar = () => {
 									<BoardIcon />
 									Roadmap
 								</a>
-								{data?.boards?.map((singleBoard) => (
-									<a href="#" className={styles.sidebarLink}>
-										<BoardIcon />
-										{singleBoard.name}
-									</a>
-								))}
+								{data?.boards?.length > 0 ? (
+									data.boards.map((singleBoard) => {
+										const boardUrl = `/boards/${singleBoard.name.replace(/\s+/g, "-").toLowerCase()}-${singleBoard.id}`;
+
+										const isActive =
+											router.asPath === boardUrl;
+
+										return (
+											<Link
+												key={singleBoard.id}
+												href={boardUrl}
+												className={cx(
+													styles.sidebarLink,
+													{
+														[styles.activeSidebarLink]:
+															isActive,
+													},
+												)}
+											>
+												<BoardIcon />
+												{singleBoard.name}
+											</Link>
+										);
+									})
+								) : (
+									<p>No boards available</p>
+								)}
 								<a
 									href="#"
 									className={`${styles.createNewBoardLink} ${styles.sidebarLink}`}

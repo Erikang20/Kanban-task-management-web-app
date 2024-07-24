@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "@components/Header/ThreeDotsMenu";
 import { Dialog } from "@components/core/Modals/Dialog";
 import logoDown from "@assets/icon-chevron-down.svg";
+import { useRouter } from "next/router";
 
 export const Cards = () => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
@@ -22,9 +23,21 @@ export const Cards = () => {
 		dialogRef.current?.close();
 		close();
 	};
+	  const router = useRouter();
+		const { pathname, query } = router;
+
+		// Construct the new query parameters
+		const newQuery = { ...query, showModal: "y" };
+
+		// Create the href with the current pathname and updated query parameters
+		const href = {
+			pathname,
+			query: newQuery,
+		};
+
 	return (
 		<div className={styles.cardContainer}>
-			<Link className={styles.cardBody} href={"?showModal=y"}>
+			<Link className={styles.cardBody} href={href}>
 				<>
 					<div>Build UI for onboarding flow</div>
 					<div className={styles.dialogContainer}>
