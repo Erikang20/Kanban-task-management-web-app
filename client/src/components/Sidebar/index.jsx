@@ -10,7 +10,8 @@ import {
 	darkThemeSideBar,
 	GlobalStyles,
 } from "@components/Home/theme";
-import { BoardIcon } from "./boardIcon";
+// import { BoardIcon } from "./boardIcon";
+import BoardIcon from "./boardIcon";
 import { useQuery } from "@apollo/client";
 import { GET_BOARDS } from "../../lib/graphql/queries";
 

@@ -8,11 +8,6 @@
 		padding-left: 16px;
 	}
 
-	.boardIconBtn {
-		padding-left: 20px;
-		padding-right: 15px;
-	}
-
 	.linkSection {
 		display: flex;
 		flex-direction: column;
@@ -22,14 +17,24 @@
 	.sidebarLink {
 		text-decoration: none;
 		color: colors.$grey;
-		padding: 16px 0;
+		padding: 16px 16px;
 
 		&:hover {
-			background-color: colors.$main-purple;
-			color: colors.$white;
+			background-color: var(--secondary-purple);
+			color: var(--main-purple);
 			border-radius: 0 45px 45px 0;
 			max-height: 80px;
+			// stroke: var(--main-purple);
+			// stroke-width: .4px;
+			// fill: var(--main-purple);
 		}
+	}
+
+	.boardIconBtn {
+		// padding-left: 20px;
+		// padding-right: 15px;
+		margin-right: 16px;
+		fill: var(--main-purple);
 	}
 
 	.createNewBoardLink {
