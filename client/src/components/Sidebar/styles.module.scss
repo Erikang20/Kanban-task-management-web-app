@@ -25,13 +25,18 @@
 		padding: 16px 0;
 
 		&:hover {
-			background-color: colors.$main-purple;
-			color: colors.$white;
+			background-color: colors.$medium-purple;
+			
 			border-radius: 0 45px 45px 0;
 			max-height: 80px;
 		}
 	}
-
+	.activeSidebarLink {
+		background-color: colors.$main-purple;
+		color: colors.$white;
+		border-radius: 0 45px 45px 0;
+		max-height: 80px;
+	}
 	.createNewBoardLink {
 		color: colors.$main-purple;
 	}

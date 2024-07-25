@@ -4,6 +4,7 @@
 
 .modalDiv {
     font-family: var(--font-regular);
+    position: relative;
 }
 
 .modalHeader {
@@ -63,6 +64,7 @@
 }
 
 .modalContent {
+    position: relative;
     width: 45%;
     background: white;
     padding: 45px;
@@ -106,4 +108,9 @@
 .closeButton {
     color: #635FC7;
     background-color: #625fc727;
+}
+.mainCross{
+    position: absolute;
+    top:20px;
+    right: 20px;
 }
