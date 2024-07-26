@@ -2,33 +2,57 @@
 
 .sidebar {
 	justify-content: space-between;
-
-	.allBoards {
-		color: colors.$grey;
-		padding-left: 16px;
-	}
-
-	.boardIconBtn {
-		padding-left: 20px;
-		padding-right: 15px;
-	}
+	font-family: var(--font-regular);
+	font-size: var(--font-size-regular);
 
 	.linkSection {
 		display: flex;
 		flex-direction: column;
 		color: colors.$grey;
+		font-weight: 500;
+	}
+
+	.allBoards {
+		color: colors.$grey;
+		padding-left: 32px;
+		margin: 12px 0;
+		font-size: var(--font-size-tiny);
+		letter-spacing: 1.5px;
+
 	}
 
 	.sidebarLink {
 		text-decoration: none;
 		color: colors.$grey;
-		padding: 16px 0;
+		padding: 12px 32px;
+		border-radius: 0 45px 45px 0;
+		max-height: 70px;
+		width: 90%;
+		display: flex;
+		align-items: center;
 
 		&:hover {
-			background-color: colors.$medium-purple;
-			
-			border-radius: 0 45px 45px 0;
-			max-height: 80px;
+			background-color: var(--secondary-purple);
+			color: var(--main-purple);
+		}
+	}
+
+	.activeSidebarLink {
+		background-color: colors.$main-purple;
+		color: colors.$white;
+		border-radius: 0 45px 45px 0;
+		max-height: 80px;
+	}
+
+	.boardIconBtn {
+		margin-right: 16px;
+	}
+
+	&.isDarkMode {
+		.sidebarLink{
+			&:hover {
+				background-color: white;
+			}
 		}
 	}
 	.activeSidebarLink {
@@ -41,9 +65,9 @@
 		color: colors.$main-purple;
 	}
 
-	.createNewBoardLink:hover {
-		cursor: pointer;
-	}
+	// .createNewBoardLink:hover {
+	// 	cursor: pointer;
+	// }
 
 	&.isDisplayed {
 		width: 300px;
@@ -59,6 +83,7 @@
 			height: 25px;
 			padding-left: 16px;
 		}
+
 		.sliderSection input {
 			opacity: 0;
 			width: 0;
@@ -74,6 +99,10 @@
 			bottom: 0;
 			background-color: colors.$main-purple;
 			border-radius: 24px;
+
+			&:hover {
+				background-color: var(--main-purple-hover);
+			}
 		}
 
 		.slider:before {
@@ -88,7 +117,7 @@
 			border-radius: 50%;
 		}
 
-		input:checked + .slider:before {
+		input:checked+.slider:before {
 			transform: translateX(26px);
 		}
 
@@ -131,39 +160,31 @@
 	border: none;
 
 	.hideSpan {
-		padding-left: 10px;
-		margin-right: 70px;
-		height: 50px;
 		overflow: hidden;
 		max-height: 50px;
 	}
 
 	&.isShowed {
-		border: none;
-		padding: 0 30px 20px 0;
-		font-weight: 700;
+		display: flex;
+		align-items: center;
+		font-weight: 500;
 		font-size: 16px;
 		color: colors.$grey;
-		column-gap: 10px;
-		border: none;
 		border-radius: 0 45px 45px 0;
 		transition: 200ms ease-in;
 		background-color: transparent;
-		margin-bottom: 20px;
-		margin-top: 10px;
+		max-height: 70px;
+		padding: 12px 0;
+		width: 90%;
+
 
 		.img {
-			top: 6px;
-			margin-left: 16px;
-			padding-left: 30px;
+			margin-left: 32px;
 		}
 
 		&:hover {
-			background-color: #e4ebfa;
-			color: colors.$main-purple;
-			left: 0;
-			padding-top: 10px;
-			max-height: 80px;
+			background-color: var(--secondary-purple);
+			color: var(--main-purple);
 		}
 	}
 
