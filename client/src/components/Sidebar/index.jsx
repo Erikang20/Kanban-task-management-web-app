@@ -56,7 +56,6 @@ const Sidebar = () => {
 		boardName = parts.join(" ");
 	}
 
-
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
 	return (
@@ -84,7 +83,7 @@ const Sidebar = () => {
 									<BoardIcon />
 									Roadmap
 								</a>
-								{data?.boards?.length > 0 ? (
+								{data?.boards?.length > 0 &&
 									data.boards.map((singleBoard) => {
 										const boardUrl = `/boards/${singleBoard.name.replace(/\s+/g, "-").toLowerCase()}-${singleBoard.id}`;
 
@@ -107,10 +106,7 @@ const Sidebar = () => {
 												{singleBoard.name}
 											</Link>
 										);
-									})
-								) : (
-									<p>No boards available</p>
-								)}
+									})}
 								<a
 									href="#"
 									className={`${styles.createNewBoardLink} ${styles.sidebarLink}`}

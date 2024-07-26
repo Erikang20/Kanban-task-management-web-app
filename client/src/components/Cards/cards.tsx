@@ -11,18 +11,9 @@ export const Cards = () => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
 
 	const onToggle = () => {
-		if (!dialogRef.current) {
-			return;
-		}
-		dialogRef.current.hasAttribute("open")
-			? dialogRef.current.close()
-			: dialogRef.current.showModal();
+		router.back();
 	};
 
-	const closeModal = () => {
-		dialogRef.current?.close();
-		close();
-	};
 	const router = useRouter();
 	const { pathname, query } = router;
 
@@ -39,7 +30,10 @@ export const Cards = () => {
 				<>
 					<div>Build UI for onboarding flow</div>
 					<div className={styles.dialogContainer}>
-						<Dialog onClose={closeModal} toggleDialog={onToggle}>
+						<Dialog
+							onClose={() => router.back()}
+							toggleDialog={onToggle}
+						>
 							{
 								<div className={styles.cardDialogBody}>
 									<div className={styles.cardDialogHeading}>

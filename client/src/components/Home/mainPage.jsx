@@ -36,18 +36,19 @@ export const MainPage = () => {
 	}, [slug]);
 	if (loading) return <p>Loading...</p>;
 	if (error) return null;
-
 	return (
 		<main className={styles.board}>
 			<div className={styles.boardContainer}>
 				<div className={styles.boardContainerLists}>
-					{!isEmpty ? (
+					{isEmpty ? (
+						<span className={styles.empty}>
+							Create a new Board to get started
+						</span>
+					) : !data || !data.columns || data.columns.length === 0 ? (
+					
 						<Lists board={data?.board} />
 					) : (
-						<span className={styles.empty}>
-							This board is empty. Create a new column to get
-							started
-						</span>
+						<Lists board={data?.board} />
 					)}
 				</div>
 			</div>

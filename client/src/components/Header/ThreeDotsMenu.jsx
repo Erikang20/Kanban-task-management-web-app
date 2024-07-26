@@ -4,11 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
 import EditBoardModal from "@components/core/Modals/EditBoardModal";
+import { useRouter } from "next/navigation";
+import { DELETE_BOARD, GET_BOARDS } from "@src/lib/graphql/queries";
+import { useMutation } from "@apollo/client";
 
 export const ThreeDotsMenu = ({ board }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 	const menuRef = useRef(null);
-
+	const [deleteBoard] = useMutation(DELETE_BOARD, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
 	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);
 	};
@@ -37,13 +42,17 @@ export const ThreeDotsMenu = ({ board }) => {
 	const handleDeleteButtonClick = () => {
 		setIsDeleteModalOpen(true);
 	};
-
+	const router = useRouter();
 	const handleCloseButtonClick = () => {
 		setIsDeleteModalOpen(false);
 		setEditBoardModalOpen(false);
 	};
 
-	const handleDeleteBoard = () => {
+	const handleDeleteBoard = async () => {
+		await deleteBoard({ variables: { id: board.id } });
+		setIsDeleteModalOpen(false);
+		router.refresh();
+
 		setIsDeleteModalOpen(false);
 	};
 
@@ -57,7 +66,7 @@ export const ThreeDotsMenu = ({ board }) => {
 	const handleToggleEditBoard = () => {
 		setEditBoardModalOpen(!editBoardModalOpen);
 	};
-	
+
 	return (
 		<div className={styles.container} ref={menuRef}>
 			<Image
@@ -94,6 +103,7 @@ export const ThreeDotsMenu = ({ board }) => {
 						editBoardModalOpen={editBoardModalOpen}
 						setEditBoardModalOpen={setEditBoardModalOpen}
 						handleToggleEditBoard={handleCloseButtonClick}
+						board={board}
 					/>
 				</div>
 			)}
