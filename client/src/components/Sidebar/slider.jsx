@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import cx from "classnames";
 import styles from "./styles.module.scss";
 import DarkThemeIcon from "@assets/icon-dark-theme.svg";

@@ -49,25 +49,23 @@
 	}
 
 	&.isDarkMode {
-		.sidebarLink{
+		.sidebarLink {
 			&:hover {
 				background-color: white;
 			}
 		}
 	}
+
 	.activeSidebarLink {
 		background-color: colors.$main-purple;
 		color: colors.$white;
 		border-radius: 0 45px 45px 0;
 		max-height: 80px;
 	}
+
 	.createNewBoardLink {
 		color: colors.$main-purple;
 	}
-
-	// .createNewBoardLink:hover {
-	// 	cursor: pointer;
-	// }
 
 	&.isDisplayed {
 		width: 300px;
@@ -159,15 +157,19 @@
 .sideBarBtn {
 	border: none;
 
+
 	.hideSpan {
 		overflow: hidden;
 		max-height: 50px;
+		margin-left: 16px;
+		font-family: var(--font-regular);
+		font-size: var(--font-size-regular);
+		font-weight: 500;
 	}
 
 	&.isShowed {
 		display: flex;
 		align-items: center;
-		font-weight: 500;
 		font-size: 16px;
 		color: colors.$grey;
 		border-radius: 0 45px 45px 0;
@@ -176,7 +178,6 @@
 		max-height: 70px;
 		padding: 12px 0;
 		width: 90%;
-
 
 		.img {
 			margin-left: 32px;
