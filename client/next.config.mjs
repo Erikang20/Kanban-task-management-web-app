@@ -1,6 +1,6 @@
 import path from 'path';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname("./src/styles/*");
 
 const nextConfig = {
   reactStrictMode: true,
