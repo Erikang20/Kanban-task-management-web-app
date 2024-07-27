@@ -13,6 +13,7 @@ export const HideSideBarBtn = (props) => {
 	const sidebarBtn = cx(styles.sideBarBtn, {
 		[styles.isShowed]: !props.isHidden,
 		[styles.isHidden]: props.isHidden,
+		[styles.isDarkMode]: props.theme === "dark",
 	});
 
 	return (

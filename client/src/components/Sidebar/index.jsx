@@ -143,6 +143,7 @@ const Sidebar = () => {
 					<HideSideBarBtn
 						isHidden={isHidden}
 						toggleButton={toggleSidebar}
+						theme={theme}
 					/>
 				</div>
 			</StyledSidebarComponent>

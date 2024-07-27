@@ -158,6 +158,8 @@
 	border: none;
 
 
+
+
 	.hideSpan {
 		overflow: hidden;
 		max-height: 50px;
@@ -186,6 +188,12 @@
 		&:hover {
 			background-color: var(--secondary-purple);
 			color: var(--main-purple);
+		}
+
+		&.isDarkMode {
+			&:hover {
+				background-color: white;
+			}
 		}
 	}
 
