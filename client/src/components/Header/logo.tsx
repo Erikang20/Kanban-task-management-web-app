@@ -1,19 +1,16 @@
 import React from "react";
-import Image from "next/image";
 import styles from "./styles.module.scss";
-import logoLight from "@assets/logo-light.svg";
-import logoDark from "@assets/logo-dark.svg";
+import LogoLight from "@assets/logo-light.svg";
+import LogoDark from "@assets/logo-dark.svg";
 
 const LogoHeader = ({ theme }) => {
 	return (
 		<>
-			<Image
-				className={styles.logo}
-				src={theme === "light" ? logoDark : logoLight}
-				width="200"
-				height="60"
-				alt="icon"
-			/>
+			{theme === "light" ?
+				<LogoDark className={styles.logo} alt="dark logo" />
+				:
+				<LogoLight className={styles.logo} alt="light logo" />
+			}
 		</>
 	);
 };

@@ -12,8 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Modals.module.css";
 import { Button } from "../Button";
 import { useState } from "react";
-import Image from "next/image";
-import cross from "@assets/icon-cross.svg";
+import Cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD, GET_BOARDS } from "../../../lib/graphql/queries";
 
@@ -75,9 +74,8 @@ const EditBoardModal = ({
 			<div className={styles.modalContent}>
 				<div>
 					<h5 className={styles.modalHeader}>Edit Board</h5>
-					<Image
+					<Cross
 						className={`${styles.cross} ${styles.mainCross}`}
-						src={cross}
 						alt="X"
 						onClick={handleToggleEditBoard}
 					/>
@@ -132,10 +130,9 @@ const EditBoardModal = ({
 											className={styles.xBtn}
 											onClick={handleXBtnClick}
 										>
-											<Image
+											<Cross
 												id={index}
 												className={styles.cross}
-												src={cross}
 												alt="X"
 											/>
 										</button>

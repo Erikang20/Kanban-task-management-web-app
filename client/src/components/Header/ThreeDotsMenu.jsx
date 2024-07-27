@@ -1,5 +1,4 @@
-import verticalEllipsis from "@assets/icon-vertical-ellipsis.svg";
-import Image from "next/image";
+import VerticalEllipsis from "@assets/icon-vertical-ellipsis.svg";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
@@ -60,14 +59,7 @@ export const ThreeDotsMenu = ({ board }) => {
 	
 	return (
 		<div className={styles.container} ref={menuRef}>
-			<Image
-				className={styles.verticalEllipsis}
-				src={verticalEllipsis}
-				width={50}
-				height={15}
-				alt="icon"
-				onClick={toggleMenu}
-			/>
+			<VerticalEllipsis className={styles.verticalEllipsis} alt="three dots" onClick={toggleMenu} />
 			{menuVisible && (
 				<div className={styles.menu}>
 					<ul>

@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import cx from "classnames";
 import styles from "./styles.module.scss";
-import darkThemeIcon from "@assets/icon-dark-theme.svg";
-import lightThemeIcon from "@assets/icon-light-theme.svg";
+import DarkThemeIcon from "@assets/icon-dark-theme.svg";
+import LightThemeIcon from "@assets/icon-light-theme.svg";
 
 const Slider = ({ isToggled, onToggle }) => {
 	const sliderCx = cx(styles.lightDarkModeIconSection, {
@@ -12,13 +12,7 @@ const Slider = ({ isToggled, onToggle }) => {
 
 	return (
 		<div className={sliderCx}>
-			<Image
-				className={styles.lightModeIcon}
-				src={lightThemeIcon}
-				width="20"
-				height="18"
-				alt="icon"
-			/>
+			<LightThemeIcon className={styles.lightModeIcon} alt="light theme icon" />
 			<label className={styles.sliderSection}>
 				<input
 					type="checkbox"
@@ -27,13 +21,7 @@ const Slider = ({ isToggled, onToggle }) => {
 				/>
 				<span className={styles.slider}></span>
 			</label>
-			<Image
-				className={styles.darkModeIcon}
-				src={darkThemeIcon}
-				width="18"
-				height="18"
-				alt="icon"
-			/>
+			<DarkThemeIcon className={styles.darkModeIcon} alt="dark theme icon" />
 		</div>
 	);
 };
