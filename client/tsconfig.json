@@ -15,7 +15,8 @@
 		"paths": {
 			"@assets/*": ["./src/assets/*"],
 			"@components/*": ["./src/components/*"],
-			"@general/*": ["./src/components/core/*"],
+			"@core/*": ["./src/components/core/*"],
+			"@dev/*": ["./src/components/DevComponents/*"],
 			"@src/*": ["./src/*"],
 			"@styles/*": ["./src/styles/*"]
 		}

@@ -1,4 +1,4 @@
-@use '@styles/colors.module.scss';
+@use "@styles/colors.module.scss";
 
 .headerRoot {
 	display: flex;
@@ -13,6 +13,10 @@
 	display: flex;
 	align-items: center;
 	border-right: 1px solid var(--light);
+
+	&.isDarkMode {
+		border-right: 1px solid colors.$dark-grey;
+	}
 }
 
 .headerTextDiv {
@@ -21,12 +25,16 @@
 	padding-left: 20px;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid var(--light);
 }
 
 .boardTitle {
 	font-size: var(--font-size-large);
 	font-weight: bold;
+
+	&.isDarkMode {
+		color: colors.$white;
+		background-color: colors.$dark-grey;
+	}
 }
 
 .headerButtons {
@@ -61,8 +69,6 @@
 	position: relative;
 	display: inline-block;
 }
-
-
 
 .menu {
 	background-color: white;

@@ -4,23 +4,25 @@ import styles from "./styles.module.scss";
 import DarkThemeIcon from "@assets/icon-dark-theme.svg";
 import LightThemeIcon from "@assets/icon-light-theme.svg";
 
-const Slider = ({ isToggled, onToggle }) => {
+const Slider = ({ theme, onToggle }) => {
 	const sliderCx = cx(styles.lightDarkModeIconSection, {
-		[styles.isDarkMode]: isToggled,
+		[styles.isDarkMode]: theme === "dark",
 	});
 
 	return (
 		<div className={sliderCx}>
-			<LightThemeIcon className={styles.lightModeIcon} alt="light theme icon" />
+			<LightThemeIcon
+				className={styles.lightModeIcon}
+				alt="light theme icon"
+			/>
 			<label className={styles.sliderSection}>
-				<input
-					type="checkbox"
-					checked={isToggled}
-					onChange={onToggle}
-				/>
+				<input type="checkbox" checked={theme} onChange={onToggle} />
 				<span className={styles.slider}></span>
 			</label>
-			<DarkThemeIcon className={styles.darkModeIcon} alt="dark theme icon" />
+			<DarkThemeIcon
+				className={styles.darkModeIcon}
+				alt="dark theme icon"
+			/>
 		</div>
 	);
 };

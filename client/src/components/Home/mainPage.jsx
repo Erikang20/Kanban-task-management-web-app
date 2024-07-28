@@ -1,15 +1,24 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
 import { Lists } from "@components/Lists/lists";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
-import { GET_BOARDS, GET_BOARD_BY_ID } from "../../lib/graphql/queries";
+import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
+import { GlobalStyles } from "@components/Home/theme";
+import { Loading } from "@dev/Loading";
 
-export const MainPage = () => {
+const StyledMainBodyComponent = styled.div`
+	background-color: ${(props) => props.theme.body};
+`;
+
+export const MainPage = ({ theme }) => {
 	const [isEmpty, setEmpty] = useState(false);
 	const router = useRouter();
 	const { slug } = router.query;
+
+	console.log(theme);
 
 	let boardName = "";
 	let boardId = "";
@@ -34,7 +43,7 @@ export const MainPage = () => {
 			setEmpty(true);
 		}
 	}, [slug]);
-	if (loading) return <p>Loading...</p>;
+	if (loading) return <Loading />;
 	if (error) return null;
 	return (
 		<main className={styles.board}>

@@ -6,11 +6,11 @@ import LogoDark from "@assets/logo-dark.svg";
 const LogoHeader = ({ theme }) => {
 	return (
 		<>
-			{theme === "light" ?
+			{theme === "light" ? (
 				<LogoDark className={styles.logo} alt="dark logo" />
-				:
+			) : (
 				<LogoLight className={styles.logo} alt="light logo" />
-			}
+			)}
 		</>
 	);
 };
