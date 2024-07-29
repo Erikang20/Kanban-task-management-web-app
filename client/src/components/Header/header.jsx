@@ -9,55 +9,49 @@ import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
 import BoardTitle from "./BoardTitle";
 
-
-
 export const Header = () => {
 	const [theme, setTheme] = useState("light");
 	const [isEmpty, setEmpty] = useState(false);
-const router = useRouter();
-const { slug } = router.query;
+	const router = useRouter();
+	const { slug } = router.query;
 
-// Handle slug
-let boardName = "";
-let boardId = "";
-if (slug) {
-	const parts = slug.split("-");
-	boardId = parts.pop();
-	boardName = parts.join(" ");
-}
-
-const { loading, error, data } = useQuery(GET_BOARD_BY_ID, {
-	skip: !boardId, 
-	variables: { id: boardId },
-});
-
-
-useEffect(() => {
-	if (!slug) {
-		setEmpty(true);
+	// Handle slug
+	let boardName = "";
+	let boardId = "";
+	if (slug) {
+		const parts = slug.split("-");
+		boardId = parts.pop();
+		boardName = parts.join(" ");
 	}
-}, [slug]);
-if (loading) return <p>Loading...</p>;
-if (error) return null;
+
+	const { loading, error, data } = useQuery(GET_BOARD_BY_ID, {
+		skip: !boardId,
+		variables: { id: boardId },
+	});
+
+	useEffect(() => {
+		if (!slug) {
+			setEmpty(true);
+		}
+	}, [slug]);
+	if (loading) return <p>Loading...</p>;
+	if (error) return null;
 	return (
 		<div className={styles.headerRoot}>
-    <div className={styles.headerLogoDiv}>
+			<div className={styles.headerLogoDiv}>
 				<LogoHeader theme={theme} />
 			</div>
 			<div className={styles.headerTextDiv}>
 				<div>
 					<BoardTitle />
 				</div>
-{!isEmpty && (
-				<div className={styles.headerButtons}>
-					<AddNewTaskBtn board={data?.board} />
-					<ThreeDotsMenu board={data?.board} />
-				</div>
-)}
-
+				{!isEmpty && (
+					<div className={styles.headerButtons}>
+						<AddNewTaskBtn board={data?.board} />
+						<ThreeDotsMenu board={data?.board} />
+					</div>
+				)}
 			</div>
-
-
 		</div>
 	);
 };

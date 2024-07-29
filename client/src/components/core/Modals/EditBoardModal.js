@@ -11,77 +11,106 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Modals.module.css";
 import { Button } from "../Button";
-import { useState } from "react";
-import Cross from "@assets/icon-cross.svg";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
-import { CREATE_BOARD, GET_BOARDS } from "../../../lib/graphql/queries";
+import {
+	CREATE_BOARD,
+	GET_BOARDS,
+	UPDATE_BOARD,
+} from "../../../lib/graphql/queries";
+import { useRouter } from "next/navigation";
 
 const EditBoardModal = ({
 	editBoardModalOpen,
 	setEditBoardModalOpen,
 	handleToggleEditBoard,
+	board,
 }) => {
-	const [inputValue, setInputValue] = useState("");
 	const [boardName, setBoardName] = useState("");
 	const [boardColumns, setBoardColumns] = useState(["Todo", "Doing"]);
 	const [newBoard, setNewBoard] = useState({
 		boardName: boardName,
 		boardColumns: boardColumns,
 	});
-	const [createBoard] = useMutation(CREATE_BOARD, {
+	const [updateBoard] = useMutation(UPDATE_BOARD, {
 		refetchQueries: [{ query: GET_BOARDS }],
 	});
 	const [errors, setErrors] = useState({
 		boardName: "",
 	});
+	const router = useRouter();
+	useEffect(() => {
+		if (board) {
+			setBoardName(board.name);
+			setBoardColumns(board.columns);
+		}
+	}, [board]);
 
 	const handleBoardNameChange = (e) => {
-		setInputValue(e.target.value);
 		const newBoardName = e.target.value;
 		setBoardName(newBoardName);
 	};
 
 	const handleBoardColumnChange = (e) => {
-		setInputValue(e.target.value);
 		boardColumns[e.target.id] = e.target.value;
 		setBoardColumns(boardColumns);
 	};
 
 	const handleEditColumnBtnClick = () => {
+		e.stopPropagation();
 		setBoardColumns([...boardColumns, ""]);
 	};
 
 	const handleXBtnClick = (e) => {
+		e.stopPropagation();
 		const newBoardColumns = [...boardColumns];
 		newBoardColumns.splice(e.target.id, 1);
 		setBoardColumns(newBoardColumns);
 	};
 
-	const handleCreateNewBoardSubmit = async (e) => {
-		// e.preventDefault();
+	const handleUpdateBoard = async (e) => {
+		e.preventDefault();
+		e.stopPropagation();
 		if (boardName) {
 			setErrors({ boardName: "" });
-			await createBoard({ variables: { name: boardName } });
+			await updateBoard({ variables: { id: board.id, name: boardName } });
 			setEditBoardModalOpen(false);
+			router.replace(
+				`/boards/${boardName.replace(/\s+/g, "-").toLowerCase()}-${board.id}`,
+			);
 		} else {
 			setErrors({ boardName: "Board name is required" });
 		}
 	};
-	if (!editBoardModalOpen) return null;
+	const handleOutsideClick = (e) => {
+		setEditBoardModalOpen(false);
+	};
+
+	if (!editBoardModalOpen) {
+		return null;
+	}
 
 	return (
-		<div className={styles.modalOverlay}>
-			<div className={styles.modalContent}>
+		<div className={styles.modalOverlay} onClick={handleOutsideClick}>
+			<div
+				className={styles.modalContent}
+				onClick={(e) => e.stopPropagation()}
+			>
 				<div>
 					<h5 className={styles.modalHeader}>Edit Board</h5>
+
+
 					<Cross
 						className={`${styles.cross} ${styles.mainCross}`}
 						alt="X"
 						onClick={handleToggleEditBoard}
 					/>
+
 				</div>
 
-				<Form onSubmit={() => setEditBoardModalOpen(false)}>
+				<Form>
 					<FormGroup>
 						<Label
 							className={styles.modalLabel}
@@ -93,6 +122,7 @@ const EditBoardModal = ({
 							name="boardName"
 							placeholder="e.g. Web Design"
 							className={styles.modalInput}
+							value={boardName}
 							onChange={handleBoardNameChange}
 						/>
 						{errors.boardName && (
@@ -150,9 +180,7 @@ const EditBoardModal = ({
 						</Button>
 					</FormGroup>
 
-					<Button onClick={handleCreateNewBoardSubmit}>
-						Create New Board
-					</Button>
+					<Button onClick={handleUpdateBoard}>Update Board</Button>
 				</Form>
 			</div>
 		</div>
