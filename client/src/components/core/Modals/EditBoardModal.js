@@ -100,6 +100,14 @@ const EditBoardModal = ({
 			>
 				<div>
 					<h5 className={styles.modalHeader}>Edit Board</h5>
+
+
+					<Cross
+						className={`${styles.cross} ${styles.mainCross}`}
+						alt="X"
+						onClick={handleToggleEditBoard}
+					/>
+
 				</div>
 
 				<Form>
@@ -152,10 +160,9 @@ const EditBoardModal = ({
 											className={styles.xBtn}
 											onClick={handleXBtnClick}
 										>
-											<Image
+											<Cross
 												id={index}
 												className={styles.cross}
-												src={cross}
 												alt="X"
 											/>
 										</button>

@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Modals.module.css";
 import { Button } from "../Button";
 import { useState } from "react";
-import Image from "next/image";
-import cross from "@assets/icon-cross.svg";
+import Cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
 import { CREATE_BOARD, GET_BOARDS } from "../../../lib/graphql/queries";
 
@@ -116,10 +115,9 @@ const AddNewBoardModal = ({
 												className={styles.xBtn}
 												onClick={handleXBtnClick}
 											>
-												<Image
+												<Cross
 													id={index}
 													className={styles.cross}
-													src={cross}
 													alt="X"
 												/>
 											</button>
