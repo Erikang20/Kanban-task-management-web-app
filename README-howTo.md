@@ -1,10 +1,10 @@
-## But first
+# But first
 
 1. Clone this repo:
 
-```
-git clone https://github.com/Erikang20/Kanban-task-management-web-app.git
-```
+    ``` bash
+    git clone https://github.com/Erikang20/Kanban-task-management-web-app.git
+    ```
 
 2. The frontend is in the client folder and the backend in the server folder
 
@@ -36,7 +36,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Project Structure
 
-```
+``` file
 |---FRONTEND APP
     |--client
 |--BACKEND APP
@@ -48,4 +48,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 To create a new branch, we use this pattern `git branch <category/description-in-kebab-case>`
 example `feature/button-component`
 
-(SitedArticle)[https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4]
+[SitedArticle](https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4)
