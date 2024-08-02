@@ -3,10 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev -p 8080",
 		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
+		"dev": "next dev -p 8080",
+		"lint": "next lint",
+		"start": "next start"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.10.8",
@@ -30,5 +30,11 @@
 		"prettier": "^3.3.2",
 		"sass": "^1.77.6",
 		"typescript": "5.5.3"
+	},
+	"overrides": {
+		"eslint": {
+			"@humanwhocodes/config-array": "npm:@eslint/config-array",
+			"file-entry-cache": "^8.0.0"
+		}
 	}
 }
