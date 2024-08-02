@@ -15,7 +15,7 @@ const getBoards = async () => {
 
 const createBoard = async (name) => {
   try {
-    console.log(name);
+  
     const board = new Board({ name });
 
     await board.save();
@@ -26,4 +26,20 @@ const createBoard = async (name) => {
   }
 };
 
-module.exports = { getBoards, createBoard };
+const getBoardById = async (id) => {
+  try {
+    const board = await Board.findById(id).populate("columns.tasks"); 
+    if (!board) {
+      throw new Error("Board not found");
+    }
+    return board;
+  } catch (error) {
+    throw new Error(`Error fetching board: ${error.message}`);
+  }
+};
+
+module.exports = {
+  getBoards,
+  createBoard,
+  getBoardById, 
+};

@@ -1,13 +1,18 @@
-import verticalEllipsis from "@assets/icon-vertical-ellipsis.svg";
-import Image from "next/image";
+import VerticalEllipsis from "@assets/icon-vertical-ellipsis.svg";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import DeleteBoardModal from "@components/core/Modals/DeleteBoardModal";
+import EditBoardModal from "@components/core/Modals/EditBoardModal";
+import { useRouter } from "next/navigation";
+import { DELETE_BOARD, GET_BOARDS } from "@src/lib/graphql/queries";
+import { useMutation } from "@apollo/client";
 
-export const ThreeDotsMenu = () => {
+export const ThreeDotsMenu = ({ board }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 	const menuRef = useRef(null);
-
+	const [deleteBoard] = useMutation(DELETE_BOARD, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
 	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);
 	};
@@ -30,37 +35,49 @@ export const ThreeDotsMenu = () => {
 		};
 	}, [menuVisible]);
 
-	//handle delete modal options
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+	const [editBoardModalOpen, setEditBoardModalOpen] = useState(false);
 
 	const handleDeleteButtonClick = () => {
 		setIsDeleteModalOpen(true);
 	};
-
+	const router = useRouter();
 	const handleCloseButtonClick = () => {
+		setIsDeleteModalOpen(false);
+		setEditBoardModalOpen(false);
+	};
+
+	const handleDeleteBoard = async () => {
+		await deleteBoard({ variables: { id: board.id } });
+		setIsDeleteModalOpen(false);
+		router.refresh();
+
 		setIsDeleteModalOpen(false);
 	};
 
-	const handleDeleteBoard = () => {
-		// TODO: Implement delete board functionality
-		// This should delete the current board and its content
-		setIsDeleteModalOpen(false);
+	const handleEditButtonClick = () => {
+		setEditBoardModalOpen(true);
+	};
+
+	const handleEditBoard = () => {
+		setEditBoardModalOpen(false);
+	};
+	const handleToggleEditBoard = () => {
+		setEditBoardModalOpen(!editBoardModalOpen);
 	};
 
 	return (
 		<div className={styles.container} ref={menuRef}>
-			<Image
-				className={styles.verticalEllipsis}
-				src={verticalEllipsis}
-				width={50}
-				height={15}
-				alt="icon"
-				onClick={toggleMenu}
-			/>
+			<VerticalEllipsis className={styles.verticalEllipsis} alt="three dots" onClick={toggleMenu} />
 			{menuVisible && (
 				<div className={styles.menu}>
 					<ul>
-						<li className={styles.edit}>Edit Board</li>
+						<li
+							className={styles.edit}
+							onClick={handleEditButtonClick}
+						>
+							Edit Board
+						</li>
 						<li
 							className={styles.delete}
 							onClick={handleDeleteButtonClick}
@@ -72,6 +89,13 @@ export const ThreeDotsMenu = () => {
 						isOpen={isDeleteModalOpen}
 						onClose={handleCloseButtonClick}
 						onDelete={handleDeleteBoard}
+					/>
+
+					<EditBoardModal
+						editBoardModalOpen={editBoardModalOpen}
+						setEditBoardModalOpen={setEditBoardModalOpen}
+						handleToggleEditBoard={handleCloseButtonClick}
+						board={board}
 					/>
 				</div>
 			)}
