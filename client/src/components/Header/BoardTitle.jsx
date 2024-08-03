@@ -1,9 +1,12 @@
-import styles from './styles.module.scss'
+import cx from "classnames";
+import styles from "./styles.module.scss";
 
-const BoardTitle = () => {
-  return (
-    <div className={styles.boardTitle}>Platform Launch</div>
-  )
-}
+const BoardTitle = ({ theme }) => {
+	const boardTitleClass = cx(styles.boardTitle, {
+		[styles.isDarkMode]: theme === "dark",
+	});
 
-export default BoardTitle
+	return <div className={boardTitleClass}>Platform Launch</div>;
+};
+
+export default BoardTitle;

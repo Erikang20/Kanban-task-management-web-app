@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Lists } from "@components/Lists/lists";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
-import { GET_BOARDS, GET_BOARD_BY_ID } from "../../lib/graphql/queries";
+import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
+import { Loading } from "@dev/Loading";
 
-export const MainPage = () => {
+export const MainPage = ({ theme }) => {
 	const [isEmpty, setEmpty] = useState(false);
 	const router = useRouter();
 	const { slug } = router.query;
+
+	console.log(theme);
 
 	let boardName = "";
 	let boardId = "";
@@ -34,8 +37,9 @@ export const MainPage = () => {
 			setEmpty(true);
 		}
 	}, [slug]);
-	if (loading) return <p>Loading...</p>;
+	if (loading) return <Loading />;
 	if (error) return null;
+
 	return (
 		<main className={styles.board}>
 			<div className={styles.boardContainer}>
@@ -45,7 +49,6 @@ export const MainPage = () => {
 							Create a new Board to get started
 						</span>
 					) : !data || !data.columns || data.columns.length === 0 ? (
-					
 						<Lists board={data?.board} />
 					) : (
 						<Lists board={data?.board} />

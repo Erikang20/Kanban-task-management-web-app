@@ -11,17 +11,16 @@
 	padding: 2rem;
 	background: var(--white);
 	height: auto;
-	/* display: flex; */
 	border-radius: 24px;
-	/* flex-wrap: wrap; */
 }
+
 .dark {
 	background: var(--black);
 	border: 1px solid black;
 }
 
 @media screen and (max-width: 575px) {
-	.Row{
+	.Row {
 		flex-wrap: wrap;
 		padding: 1rem;
 	}

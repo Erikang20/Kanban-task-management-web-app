@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import cx from "classnames";
 import AddNewTaskBtn from "@components/Header/addTaskBtn";
 import LogoHeader from "@components/Header/logo";
 import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "./ThreeDotsMenu";
-
+import { Loading } from "@dev/Loading";
 import { useRouter } from "next/router";
 import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
-import { useQuery } from "@apollo/client";
+
 import BoardTitle from "./BoardTitle";
 
-export const Header = () => {
-	const [theme, setTheme] = useState("light");
+export const Header = ({ theme }) => {
 	const [isEmpty, setEmpty] = useState(false);
 	const router = useRouter();
 	const { slug } = router.query;
@@ -34,16 +35,21 @@ export const Header = () => {
 			setEmpty(true);
 		}
 	}, [slug]);
-	if (loading) return <p>Loading...</p>;
+	if (loading) return <Loading />;
 	if (error) return null;
+
+	const boardLogoClass = cx(styles.headerLogoDiv, {
+		[styles.isDarkMode]: theme === "dark",
+	});
+
 	return (
 		<div className={styles.headerRoot}>
-			<div className={styles.headerLogoDiv}>
+			<div className={boardLogoClass}>
 				<LogoHeader theme={theme} />
 			</div>
 			<div className={styles.headerTextDiv}>
 				<div>
-					<BoardTitle />
+					<BoardTitle theme={theme} />
 				</div>
 				{!isEmpty && (
 					<div className={styles.headerButtons}>

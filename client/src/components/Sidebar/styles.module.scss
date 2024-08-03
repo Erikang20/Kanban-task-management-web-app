@@ -1,5 +1,19 @@
 @use "@styles/colors.module.scss";
 
+@media (width <= 1364px) {
+	.sidebar {
+		width: 300px !important;
+	}
+
+	.sidebarLink {
+		width: 200px !important;
+	}
+
+	.lightDarkModeIconSection {
+		margin: 0 !important;
+	}
+}
+
 .sidebar {
 	justify-content: space-between;
 	font-family: var(--font-regular);
@@ -18,7 +32,6 @@
 		margin: 12px 0;
 		font-size: var(--font-size-tiny);
 		letter-spacing: 1.5px;
-
 	}
 
 	.sidebarLink {
@@ -68,11 +81,12 @@
 	}
 
 	&.isDisplayed {
-		width: 300px;
+		width: 370px;
 		height: 90vh;
 		text-align: left;
 		display: flex;
 		flex-direction: column;
+		background-color: white;
 
 		.sliderSection {
 			position: relative;
@@ -115,24 +129,25 @@
 			border-radius: 50%;
 		}
 
-		input:checked+.slider:before {
+		input:checked + .slider:before {
 			transform: translateX(26px);
 		}
+	}
 
-		.lightDarkModeIconSection {
-			background-color: #f4f7fd;
-			height: 48px;
-			display: flex;
-			align-items: center;
-			max-height: 50px;
-			justify-content: center;
-			top: 300px;
-			margin: 0 16px 0 35px;
-			border-radius: 9px;
+	.lightDarkModeIconSection {
+		position: relative;
+		background-color: colors.$light-purple;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		max-height: 50px;
+		justify-content: center;
+		top: 120px;
+		margin: 0 16px 0 35px;
+		border-radius: 9px;
 
-			&.isDarkMode {
-				background-color: #20212c;
-			}
+		&.isDarkMode {
+			background-color: colors.$very-dark-grey;
 		}
 	}
 
@@ -144,7 +159,6 @@
 		margin-left: 20px;
 	}
 }
-
 /**
   * Hide SideBar button section
   */
@@ -156,9 +170,6 @@
 
 .sideBarBtn {
 	border: none;
-
-
-
 
 	.hideSpan {
 		overflow: hidden;
@@ -180,14 +191,18 @@
 		max-height: 70px;
 		padding: 12px 0;
 		width: 90%;
+		margin-bottom: 20px;
 
 		.img {
 			margin-left: 32px;
 		}
 
 		&:hover {
-			background-color: var(--secondary-purple);
-			color: var(--main-purple);
+			background-color: colors.$medium-purple;
+			color: colors.$main-purple;
+			left: 0;
+			// padding-top: 10px;
+			// max-height: 80px;
 		}
 
 		&.isDarkMode {
