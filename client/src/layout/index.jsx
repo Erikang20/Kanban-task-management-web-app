@@ -18,10 +18,6 @@ const StyledComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
 `;
 
-// const StyledMainBodyComponent = styled.div`
-// 	background-color: ${(props) => props.theme.body};
-// `;
-
 const AppLayout = () => {
 	const [theme, setTheme] = useState("light");
 
@@ -34,18 +30,16 @@ const AppLayout = () => {
 			<ThemeProvider
 				theme={theme === "light" ? lightThemeHeader : darkThemeHeader}
 			>
+				<GlobalStyles />
 				<Header theme={theme} />
 			</ThemeProvider>
-			<StyledComponent>
-				<GlobalStyles />
-				<div className="main-body">
-					<ThemeProvider
-						theme={
-							theme === "light"
-								? lightThemeSideBar
-								: darkThemeSideBar
-						}
-					>
+
+			<ThemeProvider
+				theme={theme === "light" ? lightThemeSideBar : darkThemeSideBar}
+			>
+				<StyledComponent>
+					<GlobalStyles />
+					<div className="main-body">
 						<Sidebar theme={theme} toggleTheme={themeToggler} />
 						<ThemeProvider
 							theme={
@@ -54,11 +48,12 @@ const AppLayout = () => {
 									: darkThemeBoard
 							}
 						>
+							<GlobalStyles />
 							<MainPage theme={theme} />
 						</ThemeProvider>
-					</ThemeProvider>
-				</div>
-			</StyledComponent>
+					</div>
+				</StyledComponent>
+			</ThemeProvider>
 		</div>
 	);
 };

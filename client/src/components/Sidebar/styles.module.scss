@@ -1,5 +1,19 @@
 @use "@styles/colors.module.scss";
 
+@media (width <= 1364px) {
+	.sidebar {
+		width: 300px !important;
+	}
+
+	.sidebarLink {
+		width: 200px !important;
+	}
+
+	.lightDarkModeIconSection {
+		margin: 0 !important;
+	}
+}
+
 .sidebar {
 	justify-content: space-between;
 	font-family: var(--font-regular);
@@ -67,11 +81,12 @@
 	}
 
 	&.isDisplayed {
-		width: 300px;
+		width: 370px;
 		height: 90vh;
 		text-align: left;
 		display: flex;
 		flex-direction: column;
+		background-color: white;
 
 		.sliderSection {
 			position: relative;
@@ -127,7 +142,7 @@
 		align-items: center;
 		max-height: 50px;
 		justify-content: center;
-		top: 250px;
+		top: 120px;
 		margin: 0 16px 0 35px;
 		border-radius: 9px;
 
@@ -144,7 +159,6 @@
 		margin-left: 20px;
 	}
 }
-
 /**
   * Hide SideBar button section
   */

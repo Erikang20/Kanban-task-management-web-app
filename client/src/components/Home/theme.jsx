@@ -7,7 +7,7 @@ export const lightThemeSideBar = {
 };
 
 export const darkThemeSideBar = {
-	background: "#2B2C37",
+	background: "#3E3F4E",
 	fontColor: "#97979",
 };
 
@@ -17,7 +17,7 @@ export const lightThemeBoard = {
 };
 
 export const darkThemeBoard = {
-	background: "black",
+	background: "#20212C",
 	fontColor: "#828FA3",
 };
 
@@ -30,10 +30,6 @@ export const darkThemeHeader = {
 	background: "20212C",
 	fontColor: "#828FA3",
 };
-
-// export const GlobalStyles = styled(Component)`
-// 	color: green;
-// `;
 
 export const GlobalStyles = createGlobalStyle`
 	body {

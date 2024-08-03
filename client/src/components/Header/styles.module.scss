@@ -13,6 +13,7 @@
 	display: flex;
 	align-items: center;
 	border-right: 1px solid var(--light);
+	background-color: colors.$white;
 
 	&.isDarkMode {
 		border-right: 1px solid colors.$dark-grey;
@@ -25,6 +26,7 @@
 	padding-left: 20px;
 	justify-content: space-between;
 	align-items: center;
+	background-color: colors.$white;
 }
 
 .boardTitle {

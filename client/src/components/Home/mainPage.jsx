@@ -1,17 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
 import { Lists } from "@components/Lists/lists";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
-import { GlobalStyles } from "@components/Home/theme";
 import { Loading } from "@dev/Loading";
-
-const StyledMainBodyComponent = styled.div`
-	background-color: ${(props) => props.theme.body};
-`;
 
 export const MainPage = ({ theme }) => {
 	const [isEmpty, setEmpty] = useState(false);
@@ -45,6 +39,7 @@ export const MainPage = ({ theme }) => {
 	}, [slug]);
 	if (loading) return <Loading />;
 	if (error) return null;
+
 	return (
 		<main className={styles.board}>
 			<div className={styles.boardContainer}>
@@ -54,7 +49,6 @@ export const MainPage = ({ theme }) => {
 							Create a new Board to get started
 						</span>
 					) : !data || !data.columns || data.columns.length === 0 ? (
-					
 						<Lists board={data?.board} />
 					) : (
 						<Lists board={data?.board} />
