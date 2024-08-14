@@ -13,7 +13,7 @@ import styles from "./Modals.module.css";
 import { Button } from "../Button";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import cross from "@assets/icon-cross.svg";
+import Cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
 import {
 	CREATE_BOARD,
@@ -30,10 +30,7 @@ const EditBoardModal = ({
 }) => {
 	const [boardName, setBoardName] = useState("");
 	const [boardColumns, setBoardColumns] = useState(["Todo", "Doing"]);
-	const [newBoard, setNewBoard] = useState({
-		boardName: boardName,
-		boardColumns: boardColumns,
-	});
+	
 	const [updateBoard] = useMutation(UPDATE_BOARD, {
 		refetchQueries: [{ query: GET_BOARDS }],
 	});
@@ -101,13 +98,11 @@ const EditBoardModal = ({
 				<div>
 					<h5 className={styles.modalHeader}>Edit Board</h5>
 
-
 					<Cross
 						className={`${styles.cross} ${styles.mainCross}`}
 						alt="X"
 						onClick={handleToggleEditBoard}
 					/>
-
 				</div>
 
 				<Form>
@@ -151,7 +146,7 @@ const EditBoardModal = ({
 											id={index}
 											name="boardColumns"
 											className={styles.modalInput}
-											value={item}
+											value={item.name}
 											onChange={handleBoardColumnChange}
 										/>
 										<button

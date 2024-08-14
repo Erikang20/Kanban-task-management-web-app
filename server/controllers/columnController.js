@@ -1,4 +1,4 @@
-const Column = require("../models/colunmModel");
+const Column = require("../models/columnModel");
 const Board = require("../models/boardModel");
 
 const createColumn = async (boardId, name) => {

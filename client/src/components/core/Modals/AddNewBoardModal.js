@@ -6,7 +6,11 @@ import { Button } from "../Button";
 import { useState } from "react";
 import Cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
-import { CREATE_BOARD, GET_BOARDS } from "../../../lib/graphql/queries";
+import {
+	CREATE_BOARD,
+	CREATE_COLUMN,
+	GET_BOARDS,
+} from "../../../lib/graphql/queries";
 
 const AddNewBoardModal = ({
 	addNewBoardModalOpen,
@@ -15,11 +19,11 @@ const AddNewBoardModal = ({
 	const [inputValue, setInputValue] = useState("");
 	const [boardName, setBoardName] = useState("");
 	const [boardColumns, setBoardColumns] = useState(["Todo", "Doing"]);
-	const [newBoard, setNewBoard] = useState({
-		boardName: boardName,
-		boardColumns: boardColumns,
-	});
+
 	const [createBoard] = useMutation(CREATE_BOARD, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
+	const [createColumn] = useMutation(CREATE_COLUMN, {
 		refetchQueries: [{ query: GET_BOARDS }],
 	});
 	const [errors, setErrors] = useState({
@@ -49,16 +53,29 @@ const AddNewBoardModal = ({
 	};
 
 	const handleCreateNewBoardSubmit = async (e) => {
-		// e.preventDefault();
+		e.preventDefault();
 		if (boardName) {
 			setErrors({ boardName: "" });
-			await createBoard({ variables: { name: boardName } });
-			setAddNewBoardModalOpen(false);
+			try {
+				const { data } = await createBoard({
+					variables: { name: boardName },
+				});
+				const boardId = data.createBoard.id;
+
+				for (let columnName of boardColumns) {
+					await createColumn({
+						variables: { boardId, name: columnName },
+					});
+				}
+
+				setAddNewBoardModalOpen(false);
+			} catch (error) {
+				console.error("Error creating board or columns:", error);
+			}
 		} else {
 			setErrors({ boardName: "Board name is required" });
 		}
 	};
-
 	return (
 		<>
 			<Modal className={styles.modalDiv} isOpen={addNewBoardModalOpen}>

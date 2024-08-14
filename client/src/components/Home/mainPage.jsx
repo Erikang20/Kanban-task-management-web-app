@@ -44,9 +44,10 @@ export const MainPage = () => {
 						<span className={styles.empty}>
 							Create a new Board to get started
 						</span>
-					) : !data || !data.columns || data.columns.length === 0 ? (
-					
-						<Lists board={data?.board} />
+					) : !data || !data.board ? (
+						<span className={styles.empty}>
+							Something Went Wrong
+						</span>
 					) : (
 						<Lists board={data?.board} />
 					)}

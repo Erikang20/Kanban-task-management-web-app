@@ -1,8 +1,14 @@
 const express = require("express");
 const { ApolloServer, gql } = require("apollo-server-express");
 const connectDB = require("./config/db");
-const { getBoards, createBoard, getBoardById } = require("./controllers/boardController");
-const { createColumn } = require("./controllers/colunmController");
+const {
+  getBoards,
+  createBoard,
+  getBoardById,
+  deleteBoard,
+  updateBoard,
+} = require("./controllers/boardController");
+const { createColumn } = require("./controllers/columnController");
 const { createTask } = require("./controllers/taskController");
 require("dotenv").config();
 const PORT = process.env.PORT || 4000;
@@ -74,7 +80,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     boards: () => getBoards(),
-    board: (_, { id }) => getBoardById(id), 
+    board: (_, { id }) => getBoardById(id),
   },
   Mutation: {
     createBoard: (_, { name }) => createBoard(name),
