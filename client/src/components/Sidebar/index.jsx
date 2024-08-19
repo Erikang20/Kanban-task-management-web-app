@@ -1,4 +1,8 @@
+"use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useQuery } from "@apollo/client";
 import cx from "classnames";
 import styled, { ThemeProvider } from "styled-components";
 import { HideSideBarBtn } from "./hideSideBarBtn";
@@ -11,10 +15,7 @@ import {
 	GlobalStyles,
 } from "@components/Home/theme";
 import { BoardIcon } from "./boardIcon";
-import { useQuery } from "@apollo/client";
 import { GET_BOARDS } from "../../lib/graphql/queries";
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 const StyledSidebarComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -46,7 +47,7 @@ const Sidebar = () => {
 	});
 
 	const router = useRouter();
-	const { slug } = router.query;
+	const { slug } = router;
 
 	let boardName = "";
 	let boardId = "";

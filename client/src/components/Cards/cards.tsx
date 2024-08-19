@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "@components/Header/ThreeDotsMenu";
 import { Dialog } from "@components/core/Modals/Dialog";
 import logoDown from "@assets/icon-chevron-down.svg";
-import { useRouter } from "next/router";
 
 export const Cards = () => {
 	const dialogRef = useRef<HTMLDialogElement>(null);
@@ -15,10 +15,8 @@ export const Cards = () => {
 	};
 
 	const router = useRouter();
-	const { pathname, query } = router;
-
-	const newQuery = { ...query, showModal: "y" };
-
+	const pathname = usePathname();
+	const newQuery = { showModal: "y" };
 	const href = {
 		pathname,
 		query: newQuery,

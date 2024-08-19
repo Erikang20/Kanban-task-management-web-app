@@ -1,10 +1,10 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import AddNewTaskBtn from "@components/Header/addTaskBtn";
 import LogoHeader from "@components/Header/logo";
 import styles from "./styles.module.scss";
 import { ThreeDotsMenu } from "./ThreeDotsMenu";
-
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { GET_BOARD_BY_ID } from "../../lib/graphql/queries";
 import { useQuery } from "@apollo/client";
 import BoardTitle from "./BoardTitle";
@@ -13,7 +13,7 @@ export const Header = () => {
 	const [theme, setTheme] = useState("light");
 	const [isEmpty, setEmpty] = useState(false);
 	const router = useRouter();
-	const { slug } = router.query;
+	const { slug } = router;
 
 	// Handle slug
 	let boardName = "";

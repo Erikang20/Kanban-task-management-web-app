@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import { SEO } from "@src/components/SEO";
-import AppLayout from "../../layout/index.jsx";
+import { Home } from "../../app/page";
+
 export default function Page() {
 	const router = useRouter();
 	const { slug } = router.query;
@@ -14,8 +14,7 @@ export default function Page() {
 
 	return (
 		<>
-			<SEO title={name} description={"Kanban task app"} />
-			<AppLayout />
+			<Home />
 		</>
 	);
 }
