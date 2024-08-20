@@ -1,0 +1,59 @@
+type Board {
+	id: ID!
+	name: String!
+	columns: [ColumnItem]
+}
+
+type ColumnItem {
+	id: ID!
+	name: String!
+	tasks: [Task]
+}
+
+type Task {
+	id: ID!
+	title: String!
+	description: String
+	status: String
+	subtasks: [SubTask]
+}
+
+type SubTask {
+	title: String!
+	isCompleted: Boolean
+}
+
+type Query {
+	boards: [Board]
+	board(id: ID!): Board
+}
+
+type Mutation {
+	createBoard(name: String!): Board
+	updateBoard(id: ID!, name: String!): Board
+	deleteBoard(id: ID!): Boolean
+	createColumn(boardId: ID!, name: String!): ColumnItem
+	updateColumn(boardId: ID!, id: ID!, name: String!): ColumnItem
+	deleteColumn(boardId: ID!, id: ID!): Boolean
+	createTask(
+		columnId: ID!
+		title: String!
+		description: String
+		status: String
+		subtasks: [SubTaskInput]
+	): Task
+	updateTask(
+		columnId: ID!
+		id: ID!
+		title: String
+		description: String
+		status: String
+		subtasks: [SubTaskInput]
+	): Task
+	deleteTask(columnId: ID!, id: ID!): Boolean
+}
+
+input SubTaskInput {
+	title: String!
+	isCompleted: Boolean
+}
