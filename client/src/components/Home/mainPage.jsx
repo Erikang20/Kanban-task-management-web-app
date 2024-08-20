@@ -37,7 +37,7 @@ export const MainPage = () => {
 	if (loading) return <p>Loading...</p>;
 	if (error) return null;
 	return (
-		<main className={styles.board}>
+		<div className={styles.board}>
 			<div className={styles.boardContainer}>
 				<div className={styles.boardContainerLists}>
 					{isEmpty ? (
@@ -51,6 +51,6 @@ export const MainPage = () => {
 					)}
 				</div>
 			</div>
-		</main>
+		</div>
 	);
 };

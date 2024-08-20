@@ -1,17 +1,17 @@
+"use client";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useQuery, ApolloProvider } from "@apollo/client";
 import Sidebar from "@components/Sidebar";
 import { Header } from "@components/Header/header";
-import { useRouter } from "next/navigation";
 import { MainPage } from "@components/Home/mainPage";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { GET_BOARDS } from "../lib/graphql/queries";
-import { ApolloWrapper } from "./ApolloClient";
 
-async function Home() {
-	// const { loading, error, data } = useQuery(GET_BOARDS);
+function Home() {
+	const { loading, error, data } = useQuery(GET_BOARDS);
 	// const { data } = await ApolloWrapper().query({ query: GET_BOARDS });
-	// const router = useRouter();
+	const router = useRouter();
 
 	// useEffect(() => {
 	// 	if (data && data.boards.length > 0) {
@@ -25,7 +25,6 @@ async function Home() {
 	// }, [data, router]);
 
 	return (
-		// <ApolloProvider client={getClient}>
 		<main>
 			<Header />
 			<div className="main-body">
