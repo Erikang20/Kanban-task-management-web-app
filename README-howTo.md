@@ -1,32 +1,24 @@
-## But first
+# Getting Started
 
-1. Clone this repo:
+- Clone this repo:
 
 ```
 git clone https://github.com/Erikang20/Kanban-task-management-web-app.git
 ```
 
-2. The frontend is in the client folder and the backend in the server folder
+You have to run the Server and the Client at the same time. Make sure you install all the dependencies:
 
-## Getting Started
+`npm install`
 
-1. `cd` into the client directory
-2. run `npm install or yarn install`
-3. run the development server:
+## From the Server folder:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`npm start`
+
+## From the Client folder:
+
+`npm run dev`
 
 Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
@@ -35,6 +27,8 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Project Structure
+
+The frontend is in the client folder and the backend in the server folder
 
 ```
 |---FRONTEND APP
@@ -48,4 +42,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 To create a new branch, we use this pattern `git branch <category/description-in-kebab-case>`
 example `feature/button-component`
 
-(SitedArticle)[https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4]
+https://dev.to/varbsan/a-simplified-convention-for-naming-branches-and-commits-in-git-il4
