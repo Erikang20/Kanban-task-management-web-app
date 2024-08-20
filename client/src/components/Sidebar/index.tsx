@@ -86,15 +86,16 @@ const Sidebar = () => {
 								</a>
 								{data?.boards?.length > 0 &&
 									data.boards.map((singleBoard) => {
-										const boardUrl = `/boards/${singleBoard.name.replace(/\s+/g, "-").toLowerCase()}-${singleBoard.id}`;
+										// const boardUrl = `/boards/${singleBoard.name.replace(/\s+/g, "-").toLowerCase()}-${singleBoard.id}`;
 
 										// const isActive =
 										// 	router.asPath === boardUrl;
 
 										return (
 											<Link
+												href={"#"}
 												key={singleBoard.id}
-												href={boardUrl}
+												// href={boardUrl}
 												className={cx(
 													styles.sidebarLink,
 													// {

@@ -68,3 +68,33 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
+
+.board {
+	background-color: #e3ebfa;
+	height: 94vh;
+	display: flex;
+	width: 100vw;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+.boardContainer {
+	margin: 20px;
+	width: 90%;
+	height: 90%;
+	background-color: transparent;
+}
+
+.boardContainerLists {
+	clear: both;
+}
+
+.empty {
+	color: var(--medium-grey);
+	font-style: normal;
+	font-size: 18px;
+	line-height: 23px;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
