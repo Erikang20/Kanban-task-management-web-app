@@ -113,8 +113,8 @@ export const CREATE_COLUMN = gql`
 `;
 
 export const UPDATE_COLUMN = gql`
-	mutation UpdateColumn($boardId: ID!, $id: ID!, $name: String!) {
-		updateColumn(boardId: $boardId, id: $id, name: $name) {
+	mutation UpdateColumn( $id: ID!, $name: String!) {
+		updateColumn(id: $id, name: $name) {
 			id
 			name
 		}
@@ -122,8 +122,8 @@ export const UPDATE_COLUMN = gql`
 `;
 
 export const DELETE_COLUMN = gql`
-	mutation DeleteColumn($boardId: ID!, $id: ID!) {
-		deleteColumn(boardId: $boardId, id: $id)
+	mutation DeleteColumn( $id: ID!) {
+		deleteColumn(id: $id)
 	}
 `;
 

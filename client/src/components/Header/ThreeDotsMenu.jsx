@@ -59,16 +59,13 @@ export const ThreeDotsMenu = ({ board }) => {
 		setEditBoardModalOpen(true);
 	};
 
-	const handleEditBoard = () => {
-		setEditBoardModalOpen(false);
-	};
-	const handleToggleEditBoard = () => {
-		setEditBoardModalOpen(!editBoardModalOpen);
-	};
-
 	return (
 		<div className={styles.container} ref={menuRef}>
-			<VerticalEllipsis className={styles.verticalEllipsis} alt="three dots" onClick={toggleMenu} />
+			<VerticalEllipsis
+				className={styles.verticalEllipsis}
+				alt="three dots"
+				onClick={toggleMenu}
+			/>
 			{menuVisible && (
 				<div className={styles.menu}>
 					<ul>

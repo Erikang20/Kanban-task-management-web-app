@@ -8,7 +8,11 @@ const {
   deleteBoard,
   updateBoard,
 } = require("./controllers/boardController");
-const { createColumn } = require("./controllers/columnController");
+const {
+  createColumn,
+  updateColumn,
+  deleteColumn,
+} = require("./controllers/columnController");
 const { createTask } = require("./controllers/taskController");
 require("dotenv").config();
 const PORT = process.env.PORT || 4000;
@@ -51,8 +55,8 @@ const typeDefs = gql`
     updateBoard(id: ID!, name: String!): Board
     deleteBoard(id: ID!): Boolean
     createColumn(boardId: ID!, name: String!): ColumnItem
-    updateColumn(boardId: ID!, id: ID!, name: String!): ColumnItem
-    deleteColumn(boardId: ID!, id: ID!): Boolean
+    updateColumn(id: ID!, name: String!): ColumnItem
+    deleteColumn(id: ID!): Boolean
     createTask(
       columnId: ID!
       title: String!
@@ -87,8 +91,8 @@ const resolvers = {
     updateBoard: (_, { id, name }) => updateBoard(id, name),
     deleteBoard: (_, { id }) => deleteBoard(id),
     createColumn: (_, { boardId, name }) => createColumn(boardId, name),
-    updateColumn: (_, { boardId, id, name }) => updateColumn(boardId, id, name),
-    deleteColumn: (_, { boardId, id }) => deleteColumn(boardId, id),
+    updateColumn: (_, { id, name }) => updateColumn(id, name),
+    deleteColumn: (_, { id }) => deleteColumn(id),
     createTask: (_, { columnId, title, description, status, subtasks }) =>
       createTask(columnId, title, description, status, subtasks),
     updateTask: (_, { columnId, id, title, description, status, subtasks }) =>
