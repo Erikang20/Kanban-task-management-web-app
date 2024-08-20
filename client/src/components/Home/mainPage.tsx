@@ -1,23 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useQuery } from "@apollo/client";
 import { Lists } from "@components/Lists/lists";
 import styles from "./styles.module.scss";
-import { useRouter } from "next/router";
 import { GET_BOARDS, GET_BOARD_BY_ID } from "../../lib/graphql/queries";
-import { useQuery } from "@apollo/client";
 
 export const MainPage = () => {
 	const [isEmpty, setEmpty] = useState(false);
 	const router = useRouter();
-	const { slug } = router.query;
+	// const { slug } = router;
 
 	let boardName = "";
 	let boardId = "";
-	if (slug) {
-		const parts = slug.split("-");
-		boardId = parts.pop();
-		boardName = parts.join(" ");
-	}
+	// if (slug) {
+	// 	const parts = slug.split("-");
+	// 	boardId = parts.pop();
+	// 	boardName = parts.join(" ");
+	// }
 	const { loading, error, data } = useQuery(GET_BOARD_BY_ID, {
 		skip: !boardId,
 		variables: { id: boardId },
@@ -29,11 +29,11 @@ export const MainPage = () => {
 		}
 	}, [error, router]);
 
-	useEffect(() => {
-		if (!slug) {
-			setEmpty(true);
-		}
-	}, [slug]);
+	// useEffect(() => {
+	// 	if (!slug) {
+	// 		setEmpty(true);
+	// 	}
+	// }, [slug]);
 	if (loading) return <p>Loading...</p>;
 	if (error) return null;
 	return (
@@ -45,7 +45,6 @@ export const MainPage = () => {
 							Create a new Board to get started
 						</span>
 					) : !data || !data.columns || data.columns.length === 0 ? (
-					
 						<Lists board={data?.board} />
 					) : (
 						<Lists board={data?.board} />

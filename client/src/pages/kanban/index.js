@@ -1,5 +1,5 @@
-import AppLayout from "@src/layout";
+// import AppLayout from "@src/layout";
 
-export default function Kanban() {
-	return <AppLayout />;
-}
+// export default function Kanban() {
+// 	return <AppLayout />;
+// }

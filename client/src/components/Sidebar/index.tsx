@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import cx from "classnames";
 import styled, { ThemeProvider } from "styled-components";
@@ -14,7 +15,7 @@ import { BoardIcon } from "./boardIcon";
 import { useQuery } from "@apollo/client";
 import { GET_BOARDS } from "../../lib/graphql/queries";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const StyledSidebarComponent = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -37,7 +38,7 @@ const Sidebar = () => {
 
 	const onThemeChanged = () => {
 		setIsToggle(!isToggled);
-		themeToggler(theme);
+		// themeToggler(theme);
 	};
 
 	const sidebarClass = cx(styles.sidebar, {
@@ -46,15 +47,15 @@ const Sidebar = () => {
 	});
 
 	const router = useRouter();
-	const { slug } = router.query;
+	// const { slug } = router;
 
 	let boardName = "";
 	let boardId = "";
-	if (slug) {
-		const parts = slug.split("-");
-		boardId = parts.pop();
-		boardName = parts.join(" ");
-	}
+	// if (slug) {
+	// 	const parts = slug.split("-");
+	// 	boardId = parts.pop();
+	// 	boardName = parts.join(" ");
+	// }
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error: {error.message}</p>;
@@ -87,8 +88,8 @@ const Sidebar = () => {
 									data.boards.map((singleBoard) => {
 										const boardUrl = `/boards/${singleBoard.name.replace(/\s+/g, "-").toLowerCase()}-${singleBoard.id}`;
 
-										const isActive =
-											router.asPath === boardUrl;
+										// const isActive =
+										// 	router.asPath === boardUrl;
 
 										return (
 											<Link
@@ -96,10 +97,10 @@ const Sidebar = () => {
 												href={boardUrl}
 												className={cx(
 													styles.sidebarLink,
-													{
-														[styles.activeSidebarLink]:
-															isActive,
-													},
+													// {
+													// 	[styles.activeSidebarLink]:
+													// 		// isActive,
+													// },
 												)}
 											>
 												<BoardIcon />
@@ -132,7 +133,7 @@ const Sidebar = () => {
 							</div>
 							<Slider
 								isToggled={isToggled}
-								onToggle={() => onThemeChanged(!isToggled)}
+								// onToggle={() => onThemeChanged(!isToggled)}
 							/>
 						</>
 					)}
