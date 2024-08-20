@@ -6,6 +6,7 @@ import { Header } from "@components/Header/Header";
 import { MainPage } from "@components/Home/mainPage";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { GET_BOARDS } from "../lib/graphql/queries";
+import "./globals.css";
 
 function Home() {
 	// const { loading, error, data } = useQuery(GET_BOARDS);

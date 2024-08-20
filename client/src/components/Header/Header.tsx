@@ -34,6 +34,7 @@ export const Header = () => {
 	// 		setEmpty(true);
 	// 	}
 	// }, [slug]);
+
 	if (loading) return <p>Loading...</p>;
 	if (error) return null;
 
