@@ -27,24 +27,15 @@ const updateColumn = async (columnId, name) => {
     throw new Error("Error updating column");
   }
 };
-const deleteColumn = async (boardId, columnId) => {
+const deleteColumn = async ( columnId) => {
   try {
-    const board = await Board.findById(boardId);
-    if (!board) {
-      throw new Error("Board not found");
-    }
-
-    board.columns = board.columns.filter(
-      (column) => column.toString() !== columnId
-    );
-    await board.save();
-
+  
     const deletedColumn = await Column.findByIdAndDelete(columnId);
     if (!deletedColumn) {
       throw new Error("Column not found");
     }
 
-    return deletedColumn;
+    return true;
   } catch (err) {
     throw new Error("Error deleting column");
   }

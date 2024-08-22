@@ -76,7 +76,7 @@ const EditBoardModal = ({
 		setBoardColumns(updatedColumns);
 	};
 
-	const handleEditColumnBtnClick = () => {
+	const handleEditColumnBtnClick = (e) => {
 		e.stopPropagation();
 		setBoardColumns([...boardColumns, ""]);
 	};

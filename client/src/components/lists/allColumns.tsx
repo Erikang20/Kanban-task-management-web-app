@@ -16,12 +16,13 @@ const AllColumns = ({ board }: Props) => {
 			{board.columns.map((column) => (
 				<>
 					<div className={styles.listHeaderContainer}>
-						<div
-							key={column.id}
-							className={cx(styles.headerIcon, {
-								[`${styles["headerIcon-" + "blue"]}`]: true,
-							})}
-						>
+						<div className={styles.headerContainerTextIcon}>
+							<div
+								key={column.id}
+								className={cx(styles.headerIcon, {
+									[`${styles["headerIcon-" + "blue"]}`]: true,
+								})}
+							></div>
 							<ListHeader name={column.name} />
 						</div>
 						<Cards />
@@ -29,9 +30,13 @@ const AllColumns = ({ board }: Props) => {
 				</>
 			))}
 
-            <div className={styles.addColumnButtonContainer}>
-                <AddColumnButton board={board} filled={false} text={'+ New Column'} />
-            </div>
+			<div className={styles.addColumnButtonContainer}>
+				<AddColumnButton
+					board={board}
+					filled={false}
+					text={"+ New Column"}
+				/>
+			</div>
 		</>
 	);
 };
