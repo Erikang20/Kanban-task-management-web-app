@@ -1,10 +1,9 @@
 @use "@styles/colors.module.scss";
 
 .board {
-	background-color: #e3ebfa;
+	background-color: #f4f7fd;
 	height: 94vh;
 	display: flex;
-	width: 100vw;
 	align-content: center;
 	flex-wrap: wrap;
 }
@@ -18,6 +17,7 @@
 
 .boardContainerLists {
 	clear: both;
+	height: 90%;
 }
 
 .empty {
@@ -28,4 +28,36 @@
 	flex: 1;
 	display: flex;
 	justify-content: center;
+}
+
+.addNewColumnBtn {
+	background-color: colors.$main-purple;
+	border-radius: 2rem;
+	font-family: var(--font-regular);
+	font-size: var(--font-size-small);
+	height: var(--height-button);
+	color: colors.$white;
+	padding: 1rem 2rem;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+
+	&:hover {
+		background-color: colors.$hovered-purple;
+	}
+}
+.addNewColumnBtnEmpty {
+	font-family: var(--font-regular);
+	font-size: var(--font-size-medium);
+	height: var(--height-button);
+	color: #828fa3;
+	margin: 1rem 2rem;
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+
+	&:hover {
+		color: colors.$hovered-purple;
+	}
 }

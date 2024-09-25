@@ -1,5 +1,5 @@
 const Task = require("../models/taskModel");
-const Column = require("../models/colunmModel");
+const Column = require("../models/columnModel");
 
 const createTask = async (columnId, title, description, status, subtasks) => {
   try {

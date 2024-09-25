@@ -1,16 +1,5 @@
 const mongoose = require("mongoose");
 
-const subTaskSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  isCompleted: {
-    type: Boolean,
-    default: false,
-  },
-});
-
 const taskSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -18,7 +7,12 @@ const taskSchema = new mongoose.Schema({
   },
   description: String,
   status: String,
-  subtasks: [subTaskSchema],
+  subtasks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subtask",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Task", taskSchema);

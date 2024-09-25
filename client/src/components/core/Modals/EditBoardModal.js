@@ -13,12 +13,15 @@ import styles from "./Modals.module.css";
 import { Button } from "../Button";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import cross from "@assets/icon-cross.svg";
+import Cross from "@assets/icon-cross.svg";
 import { useMutation } from "@apollo/client";
 import {
 	CREATE_BOARD,
+	CREATE_COLUMN,
+	DELETE_COLUMN,
 	GET_BOARDS,
 	UPDATE_BOARD,
+	UPDATE_COLUMN,
 } from "../../../lib/graphql/queries";
 import { useRouter } from "next/navigation";
 
@@ -30,11 +33,19 @@ const EditBoardModal = ({
 }) => {
 	const [boardName, setBoardName] = useState("");
 	const [boardColumns, setBoardColumns] = useState(["Todo", "Doing"]);
-	const [newBoard, setNewBoard] = useState({
-		boardName: boardName,
-		boardColumns: boardColumns,
-	});
+	const [initialColumns, setInitialColumns] = useState([]);
 	const [updateBoard] = useMutation(UPDATE_BOARD, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
+	const [deleteColumn] = useMutation(DELETE_COLUMN, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
+
+	const [createColumn] = useMutation(CREATE_COLUMN, {
+		refetchQueries: [{ query: GET_BOARDS }],
+	});
+
+	const [updateColumn] = useMutation(UPDATE_COLUMN, {
 		refetchQueries: [{ query: GET_BOARDS }],
 	});
 	const [errors, setErrors] = useState({
@@ -45,6 +56,7 @@ const EditBoardModal = ({
 		if (board) {
 			setBoardName(board.name);
 			setBoardColumns(board.columns);
+			setInitialColumns(board.columns);
 		}
 	}, [board]);
 
@@ -54,11 +66,17 @@ const EditBoardModal = ({
 	};
 
 	const handleBoardColumnChange = (e) => {
-		boardColumns[e.target.id] = e.target.value;
-		setBoardColumns(boardColumns);
+		const updatedColumns = [...boardColumns];
+
+		updatedColumns[e.target.id] = {
+			...updatedColumns[e.target.id],
+			name: e.target.value,
+		};
+
+		setBoardColumns(updatedColumns);
 	};
 
-	const handleEditColumnBtnClick = () => {
+	const handleEditColumnBtnClick = (e) => {
 		e.stopPropagation();
 		setBoardColumns([...boardColumns, ""]);
 	};
@@ -72,18 +90,61 @@ const EditBoardModal = ({
 
 	const handleUpdateBoard = async (e) => {
 		e.preventDefault();
-		e.stopPropagation();
 		if (boardName) {
 			setErrors({ boardName: "" });
-			await updateBoard({ variables: { id: board.id, name: boardName } });
-			setEditBoardModalOpen(false);
-			router.replace(
-				`/boards/${boardName.replace(/\s+/g, "-").toLowerCase()}-${board.id}`,
-			);
+			try {
+				await updateBoard({
+					variables: { id: board.id, name: boardName },
+				});
+
+				const removedColumns = initialColumns.filter(
+					(initialColumn) =>
+						!boardColumns.some(
+							(updatedColumn) =>
+								updatedColumn.id === initialColumn.id,
+						),
+				);
+
+				for (let column of removedColumns) {
+					await deleteColumn({
+						variables: {
+							id: column.id,
+						},
+					});
+				}
+
+				for (let column of boardColumns) {
+					if (column.id) {
+						await updateColumn({
+							variables: {
+								id: column.id,
+								name: column.name,
+							},
+						});
+					} else {
+						await createColumn({
+							variables: {
+								boardId: board.id,
+								name: column.name,
+							},
+						});
+					}
+				}
+
+				setEditBoardModalOpen(false);
+				router.replace(
+					`/boards/${boardName
+						.replace(/\s+/g, "-")
+						.toLowerCase()}-${board.id}`,
+				);
+			} catch (error) {
+				console.error("Error updating board:", error);
+			}
 		} else {
 			setErrors({ boardName: "Board name is required" });
 		}
 	};
+
 	const handleOutsideClick = (e) => {
 		setEditBoardModalOpen(false);
 	};
@@ -101,13 +162,11 @@ const EditBoardModal = ({
 				<div>
 					<h5 className={styles.modalHeader}>Edit Board</h5>
 
-
 					<Cross
 						className={`${styles.cross} ${styles.mainCross}`}
 						alt="X"
 						onClick={handleToggleEditBoard}
 					/>
-
 				</div>
 
 				<Form>
@@ -151,7 +210,7 @@ const EditBoardModal = ({
 											id={index}
 											name="boardColumns"
 											className={styles.modalInput}
-											value={item}
+											value={item.name}
 											onChange={handleBoardColumnChange}
 										/>
 										<button
