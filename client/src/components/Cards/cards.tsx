@@ -28,7 +28,7 @@ export const Cards = () => {
 		<div className={styles.cardContainer}>
 			<Link className={styles.cardBody} href={href}>
 				<>
-					<div>Build UI for onboarding flow asfas  asf   sf a safa</div>
+					<div>Build UI for onboarding flow</div>
 					<div className={styles.dialogContainer}>
 						<Dialog
 							onClose={() => router.back()}
