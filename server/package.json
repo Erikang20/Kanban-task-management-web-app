@@ -7,9 +7,9 @@
 	"dependencies": {
 		"apollo-server-express": "^3.13.0",
 		"dotenv": "^16.4.5",
-		"express": "^4.21.1",
+		"express": "^4.21.2",
 		"graphql": "^16.9.0",
-		"mongoose": "^8.8.3"
+		"mongoose": "^8.8.4"
 	},
 	"version": "1.0.0",
 	"description": "![Design preview for the Kanban task management web app coding challenge](./preview.jpg)",
