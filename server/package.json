@@ -7,7 +7,7 @@
 	"dependencies": {
 		"apollo-server-express": "^3.13.0",
 		"dotenv": "^16.4.5",
-		"express": "^4.21.2",
+		"express": "^4.22.1",
 		"graphql": "^16.9.0",
 		"mongoose": "^8.9.5"
 	},
